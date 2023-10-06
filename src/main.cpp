@@ -1,23 +1,6 @@
-#include "raylib.h"
-void main() 
+#include "game.h"
+int main() 
 {
-    const int screenWidth = 800;
-    const int screenHeight = 450;
-
-    InitWindow(screenWidth, screenHeight, "Asteriods");
-
-
-    while (!WindowShouldClose())    
-    {
-        
-        BeginDrawing();
-
-        ClearBackground(BLACK);      
-
-        EndDrawing();
-        
-    }
-
-    
-    CloseWindow();
+	runGame();
+	return 0;
 }
