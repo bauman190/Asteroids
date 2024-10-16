@@ -3,39 +3,104 @@
 #include "raylib.h"
 
 #include "Player.h"
-
 #include "ScreenOptions.h"
+#include "MainMenu.h"
+#include "Gameplay.h"
 
+const int windowWidth = 1024;
+const int windowHeight = 768;
+
+Screen currentScreen = MainMenu;
+
+Texture backGround;
+
+void inIt();
+
+void checkImput();
+
+void update();
+
+void draw();
+
+void close();
 
 void runGame()
 {
-	const int Width = 1024;
-	const int Height = 768;
-
-	//Screen currentScreen;
-
-	InitWindow(Width, Height, "Asteroids");
-
-
-	player player;
-	player.x = static_cast<float>(GetScreenWidth() / 2);
-	player.y = static_cast<float>(GetScreenHeight() / 2);
-	player.speed = 100.0f;
+	inIt();
 
 	while (!WindowShouldClose())
 	{
-		moveUp(player);
-		moveDown(player);
-		moveLeft(player);
-		moveRight(player);
+		checkImput();
 
+		update();
 
-		BeginDrawing();
-		ClearBackground(BLACK);
-		DrawCircle(static_cast<int>(player.x), static_cast<int>(player.y), 10, WHITE);
-		EndDrawing();
+		draw();
 	}
 
-	CloseWindow();
+	close();
+}
 
+void inIt()
+{
+	InitWindow(windowWidth, windowHeight, "Pong");
+	inItMainMenu();
+	inItGamePlay();
+}
+
+void checkImput()
+{
+	switch (currentScreen)
+	{
+	case MainMenu:
+		checkImputMainMenu();
+		break;
+	case Gameplay:
+		checkImputGamePlay();
+		break;
+	default:
+		break;
+	}
+}
+
+void update()
+{
+
+	switch (currentScreen)
+	{
+	case MainMenu:
+		break;
+	case Gameplay:
+		updateGamePlay();
+		break;
+	default:
+		break;
+	}
+
+}
+
+void draw()
+{
+	BeginDrawing();
+	ClearBackground(BLACK);
+
+	switch (currentScreen)
+	{
+	case MainMenu:
+		drawMainMenu();
+		break;
+	case Gameplay:
+		drawGamePlay();
+		break;
+		
+	default:
+		break;
+	}
+
+	EndDrawing();
+}
+
+void close()
+{
+	UnloadTexture(backGround);
+	CloseWindow();
 }
