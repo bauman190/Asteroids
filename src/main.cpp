@@ -1,33 +1,6 @@
-#include "raylib.h"
-
-#include "Player.h"
-
-const int Width = 1024;
-const int Height = 768;
+#include "Game.h"
 
 int main()
 {
-	InitWindow(Width, Height, "Asteroids");
-
-
-	player player;
-	player.x = static_cast<float>(GetScreenWidth() / 2);
-	player.y = static_cast<float>(GetScreenHeight() / 2);
-	player.speed = 100.0f;
-
-	while (!WindowShouldClose())
-	{
-		moveUp(player);
-		moveDown(player);
-		moveLeft(player);
-		moveRight(player);
-
-
-		BeginDrawing();
-		ClearBackground(BLACK);
-		DrawCircle(static_cast<int>(player.x), static_cast<int>(player.y), 10, WHITE);
-		EndDrawing();
-	}
-
-	CloseWindow();
+	runGame();
 }
