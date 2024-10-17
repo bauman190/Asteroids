@@ -1,5 +1,5 @@
 #pragma once
-
+#include "raylib.h"
 
 struct player
 {
@@ -7,6 +7,9 @@ struct player
 	float y;
 	int lives;
 	float speed;
+	Texture2D texture;
+	Rectangle textureProperties;
+	Rectangle texturePos;
 };
 
 void moveUp(player& player);

@@ -70,7 +70,7 @@ void update()
 	case MainMenu:
 		break;
 	case Gameplay:
-		updateGamePlay();
+		//updateGamePlay();
 		break;
 	default:
 		break;
@@ -101,6 +101,7 @@ void draw()
 
 void close()
 {
+	unloadTextures();
 	UnloadTexture(backGround);
 	CloseWindow();
 }

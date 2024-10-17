@@ -7,3 +7,5 @@ void checkImputGamePlay();
 void updateGamePlay();
 
 void drawGamePlay();
+
+void unloadTextures();
