@@ -7,6 +7,7 @@
 
 static player Player;
 
+static Texture space;
 
 void inItGamePlay()
 {
@@ -23,6 +24,8 @@ void inItGamePlay()
 	Player.texturePos.x = Player.x;
 	Player.texturePos.y = Player.y;
 	Player.maxSpeed = 250.0f;
+
+	space = LoadTexture("res/space.png");
 }
 
 void checkImputGamePlay()
@@ -39,6 +42,7 @@ void updateGamePlay()
 
 void drawGamePlay()
 {
+	DrawTexture(space, 0, 0, WHITE);
 	DrawTexturePro(Player.texture, Player.textureProperties, Player.texturePos, { Player.texturePos.width / 2, Player.texturePos.height / 2 }, shipRotation(Player), WHITE);
 	DrawCircle(static_cast<int>(Player.x), static_cast<int>(Player.y), 10, WHITE);
 	shipRotation(Player);
