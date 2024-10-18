@@ -55,12 +55,12 @@ void drawGamePlay()
 {
 	DrawTexture(space, 0, 0, WHITE);
 	drawPlayerTexture();
-	drawAsteroid(ast);
 #ifdef _DEBUG
 	DrawCircle(static_cast<int>(Player.x), static_cast<int>(Player.y), Player.radius, WHITE);
+	drawAsteroid(ast);
 	if (colitionCirCir(Player, ast ))
 	{
-		DrawText("TRUE", 0, 0, 10, RED);
+		DrawText("TRUE", 0, 0, 40, RED);
 	}
 #endif // _DEBUG
 
