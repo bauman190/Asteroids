@@ -9,6 +9,8 @@ static player Player;
 
 static Texture space;
 
+static Texture otherShip;
+
 void inItGamePlay()
 {
 	Player.x = static_cast<float>(GetScreenWidth() / 2);
@@ -24,6 +26,7 @@ void inItGamePlay()
 	Player.texturePos.x = Player.x;
 	Player.texturePos.y = Player.y;
 	Player.maxSpeed = 250.0f;
+	otherShip = LoadTexture("res/Nave1.png");
 
 	space = LoadTexture("res/space.png");
 }
@@ -40,10 +43,22 @@ void updateGamePlay()
 
 }
 
+void changePlayerTexture()
+{
+	if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
+	{
+		DrawTexturePro(otherShip, Player.textureProperties, Player.texturePos, { Player.texturePos.width / 2, Player.texturePos.height / 2 }, shipRotation(Player), WHITE);
+	}
+	else if (!IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
+	{
+		DrawTexturePro(Player.texture, Player.textureProperties, Player.texturePos, { Player.texturePos.width / 2, Player.texturePos.height / 2 }, shipRotation(Player), WHITE);
+	}
+}
+
 void drawGamePlay()
 {
 	DrawTexture(space, 0, 0, WHITE);
-	DrawTexturePro(Player.texture, Player.textureProperties, Player.texturePos, { Player.texturePos.width / 2, Player.texturePos.height / 2 }, shipRotation(Player), WHITE);
+	changePlayerTexture();
 	DrawCircle(static_cast<int>(Player.x), static_cast<int>(Player.y), 10, WHITE);
 	shipRotation(Player);
 	screenLimits(Player);
@@ -52,4 +67,6 @@ void drawGamePlay()
 void unloadTextures()
 {
 	UnloadTexture(Player.texture);
+	UnloadTexture(otherShip);
 }
+
