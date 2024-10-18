@@ -43,7 +43,7 @@ void updateGamePlay()
 
 }
 
-void changePlayerTexture()
+void drawPlayerTexture()
 {
 	if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 	{
@@ -58,7 +58,7 @@ void changePlayerTexture()
 void drawGamePlay()
 {
 	DrawTexture(space, 0, 0, WHITE);
-	changePlayerTexture();
+	drawPlayerTexture();
 	DrawCircle(static_cast<int>(Player.x), static_cast<int>(Player.y), 10, WHITE);
 	shipRotation(Player);
 	screenLimits(Player);
