@@ -60,6 +60,7 @@ void inItPlayer(player& player)
 	player.x = static_cast<float>(GetScreenWidth() / 2);
 	player.y = static_cast<float>(GetScreenHeight() / 2);
 	player.speed = { 0.0f, 0.0f };
+	player.radius = 15;
 	player.texture = LoadTexture("res/Nave2.png");
 	player.textureProperties.x = 0;
 	player.textureProperties.y = 0;

@@ -6,6 +6,7 @@ struct player
 	float x;
 	float y;
 	int lives;
+	float radius;
 	float maxSpeed;
 	Vector2 speed;
 	Texture2D texture;
