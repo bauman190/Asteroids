@@ -48,7 +48,10 @@ void drawGamePlay()
 {
 	DrawTexture(space, 0, 0, WHITE);
 	drawPlayerTexture();
+#ifdef _DEBUG
 	DrawCircle(static_cast<int>(Player.x), static_cast<int>(Player.y), 10, WHITE);
+#endif // _DEBUG
+
 }
 
 void unloadTextures()
