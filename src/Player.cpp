@@ -39,19 +39,19 @@ void screenLimits(player& player)
 {
 	if (player.x >= GetScreenWidth())
 	{
-		player.x = 0 + 10;
+		player.x = 0 + player.radius;
 	}
 	else if (player.x <= 0)
 	{
-		player.x = static_cast<float>(GetScreenWidth() - 10);
+		player.x = static_cast<float>(GetScreenWidth() - player.radius);
 	}
 	else if (player.y <= 0)
 	{
-		player.y = static_cast<float>(GetScreenHeight() - 10);
+		player.y = static_cast<float>(GetScreenHeight() - player.radius);
 	}
 	else if (player.y >= GetScreenHeight())
 	{
-		player.y = 0 + 10;
+		player.y = 0 + player.radius;
 	}
 }
 
