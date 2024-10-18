@@ -70,7 +70,7 @@ void update()
 	case MainMenu:
 		break;
 	case Gameplay:
-		//updateGamePlay();
+		updateGamePlay();
 		break;
 	default:
 		break;

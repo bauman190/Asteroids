@@ -6,13 +6,13 @@ struct player
 	float x;
 	float y;
 	int lives;
-	float speed;
+	float maxSpeed;
+	Vector2 speed;
 	Texture2D texture;
 	Rectangle textureProperties;
 	Rectangle texturePos;
 };
 
-void moveUp(player& player);
-void moveDown(player& player);
-void moveLeft(player& player);
-void moveRight(player& player);
+float shipRotation(player player);
+void playerMovment(player& player);
+void screenLimits(player& player);
