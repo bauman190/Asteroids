@@ -40,7 +40,8 @@ void checkImputGamePlay()
 
 void updateGamePlay()
 {
-
+	screenLimits(Player);
+	shipRotation(Player);
 }
 
 void drawPlayerTexture()
@@ -60,8 +61,6 @@ void drawGamePlay()
 	DrawTexture(space, 0, 0, WHITE);
 	drawPlayerTexture();
 	DrawCircle(static_cast<int>(Player.x), static_cast<int>(Player.y), 10, WHITE);
-	shipRotation(Player);
-	screenLimits(Player);
 }
 
 void unloadTextures()
