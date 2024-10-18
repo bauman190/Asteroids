@@ -13,19 +13,7 @@ static Texture otherShip;
 
 void inItGamePlay()
 {
-	Player.x = static_cast<float>(GetScreenWidth() / 2);
-	Player.y = static_cast<float>(GetScreenHeight() / 2);
-	Player.speed = { 0.0f, 0.0f};
-	Player.texture = LoadTexture("res/Nave2.png");
-	Player.textureProperties.x = 0;
-	Player.textureProperties.y = 0;
-	Player.textureProperties.height = static_cast<float>(Player.texture.height);
-	Player.textureProperties.width = static_cast<float>(Player.texture.width);
-	Player.texturePos.width = static_cast<float>(Player.texture.width * 3);
-	Player.texturePos.height = static_cast<float>(Player.texture.height * 3);
-	Player.texturePos.x = Player.x;
-	Player.texturePos.y = Player.y;
-	Player.maxSpeed = 250.0f;
+	inItPlayer(Player);
 	otherShip = LoadTexture("res/Nave1.png");
 
 	space = LoadTexture("res/space.png");

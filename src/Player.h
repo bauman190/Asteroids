@@ -16,3 +16,4 @@ struct player
 float shipRotation(player player);
 void playerMovment(player& player);
 void screenLimits(player& player);
+void inItPlayer(player& player);

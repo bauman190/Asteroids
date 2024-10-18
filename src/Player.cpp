@@ -9,7 +9,6 @@ float shipRotation(player player)
 {
 	float angle = static_cast<float>(atan2(GetMousePosition().y - player.y , GetMousePosition().x - player.x) * (180 / PI));
 
-	DrawText(TextFormat("Score: %.2f", angle), 200, 80, 20, RED);
 	return angle;
 }
 
@@ -54,4 +53,21 @@ void screenLimits(player& player)
 	{
 		player.y = 0 + 10;
 	}
+}
+
+void inItPlayer(player& player)
+{
+	player.x = static_cast<float>(GetScreenWidth() / 2);
+	player.y = static_cast<float>(GetScreenHeight() / 2);
+	player.speed = { 0.0f, 0.0f };
+	player.texture = LoadTexture("res/Nave2.png");
+	player.textureProperties.x = 0;
+	player.textureProperties.y = 0;
+	player.textureProperties.height = static_cast<float>(player.texture.height);
+	player.textureProperties.width = static_cast<float>(player.texture.width);
+	player.texturePos.width = static_cast<float>(player.texture.width * 3);
+	player.texturePos.height = static_cast<float>(player.texture.height * 3);
+	player.texturePos.x = player.x;
+	player.texturePos.y = player.y;
+	player.maxSpeed = 250.0f;
 }
