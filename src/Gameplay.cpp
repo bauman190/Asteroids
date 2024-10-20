@@ -6,7 +6,7 @@
 #include "Asteroid.h"
 #include "math.h"
 
-static player Player;
+static player spaceShip;
 
 static Texture space;
 
@@ -14,12 +14,12 @@ static Texture otherShip;
 
 static asteroid ast;
 
-bool colitionCirCir(player player, asteroid asteroid);
+bool colitionCirCir(player SpaceShip, asteroid asteroid);
 
 
 void inItGamePlay()
 {
-	inItPlayer(Player);
+	inItPlayer(spaceShip);
 	inItAsteroid(ast);
 	otherShip = LoadTexture("res/Nave1.png");
 
@@ -28,26 +28,26 @@ void inItGamePlay()
 
 void checkImputGamePlay()
 {
-	playerMovment(Player);
-	Player.texturePos.x = Player.x;
-	Player.texturePos.y = Player.y;
+	playerMovment(spaceShip);
+	spaceShip.texturePos.x = spaceShip.x;
+	spaceShip.texturePos.y = spaceShip.y;
 }
 
 void updateGamePlay()
 {
-	screenLimits(Player);
-	shipRotation(Player);
+	screenLimits(spaceShip);
+	shipRotation(spaceShip);
 }
 
 void drawPlayerTexture()
 {
 	if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 	{
-		DrawTexturePro(otherShip, Player.textureProperties, Player.texturePos, { Player.texturePos.width / 2, Player.texturePos.height / 2 }, shipRotation(Player), WHITE);
+		DrawTexturePro(otherShip, spaceShip.textureProperties, spaceShip.texturePos, { spaceShip.texturePos.width / 2, spaceShip.texturePos.height / 2 }, shipRotation(spaceShip), WHITE);
 	}
 	else if (!IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 	{
-		DrawTexturePro(Player.texture, Player.textureProperties, Player.texturePos, { Player.texturePos.width / 2, Player.texturePos.height / 2 }, shipRotation(Player), WHITE);
+		DrawTexturePro(spaceShip.texture, spaceShip.textureProperties, spaceShip.texturePos, { spaceShip.texturePos.width / 2, spaceShip.texturePos.height / 2 }, shipRotation(spaceShip), WHITE);
 	}
 }
 
@@ -56,9 +56,9 @@ void drawGamePlay()
 	DrawTexture(space, 0, 0, WHITE);
 	drawPlayerTexture();
 #ifdef _DEBUG
-	DrawCircle(static_cast<int>(Player.x), static_cast<int>(Player.y), Player.radius, WHITE);
+	DrawCircle(static_cast<int>(spaceShip.x), static_cast<int>(spaceShip.y), spaceShip.radius, WHITE);
 	drawAsteroid(ast);
-	if (colitionCirCir(Player, ast ))
+	if (colitionCirCir(spaceShip, ast ))
 	{
 		DrawText("TRUE", 0, 0, 40, RED);
 	}
@@ -68,14 +68,14 @@ void drawGamePlay()
 
 void unloadTextures()
 {
-	UnloadTexture(Player.texture);
+	UnloadTexture(spaceShip.texture);
 	UnloadTexture(otherShip);
 }
 
-bool colitionCirCir(player player, asteroid asteroid)
+bool colitionCirCir(player SpaceShip, asteroid asteroid)
 {
-	float distance = static_cast<float>(sqrt(pow(player.x - asteroid.x, 2) + pow(player.y - asteroid.y, 2)));
-	if (distance <= player.radius + asteroid.radius)
+	float distance = static_cast<float>(sqrt(pow(SpaceShip.x - asteroid.x, 2) + pow(SpaceShip.y - asteroid.y, 2)));
+	if (distance <= SpaceShip.radius + asteroid.radius)
 	{
 		return true;
 	}
