@@ -1,6 +1,15 @@
 #pragma once
 #include "raylib.h"
 
+struct textureInfo
+{
+	Texture spaceShipTexture;
+	Texture movingShipTexture;
+	Rectangle source;
+	Rectangle dest;
+
+};
+
 struct player
 {
 	float x;
@@ -9,12 +18,11 @@ struct player
 	float radius;
 	float maxSpeed;
 	Vector2 speed;
-	Texture2D texture;
-	Rectangle textureProperties;
-	Rectangle texturePos;
+	textureInfo textureInfo;
 };
 
-float shipRotation(player player);
-void playerMovment(player& player);
-void screenLimits(player& player);
-void inItPlayer(player& player);
+float spaceShipRotation(player SpaceShip);
+void spaceShipMovment(player& SpaceShip);
+void screenLimits(player& SpaceShip);
+void inItSpaceShip(player& SpaceShip);
+void drawSpaceShipTexture(player SpaceShip);
