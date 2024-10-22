@@ -42,21 +42,25 @@ void updateGamePlay()
 	distroyBullets(bullets, maxAmmo);
 }
 
+void drawDEBUG()
+{
+	DrawCircle(static_cast<int>(spaceShip.x), static_cast<int>(spaceShip.y), spaceShip.radius, WHITE);
+	drawAsteroid(ast);
+	drawBulletsColider(bullets, maxAmmo);
+	if (colitionCirCir(spaceShip, ast))
+	{
+		DrawText("TRUE", 0, 0, 40, RED);
+	}
+}
+
 void drawGamePlay()
 {
 	DrawTexture(space, 0, 0, WHITE);
 	drawSpaceShipTexture(spaceShip);
 	drawBullet(bullets, maxAmmo);
 #ifdef _DEBUG
-	DrawCircle(static_cast<int>(spaceShip.x), static_cast<int>(spaceShip.y), spaceShip.radius, WHITE);
-	drawAsteroid(ast);
-	drawBulletsColider(bullets, spaceShip.maxAmmo);
-	if (colitionCirCir(spaceShip, ast ))
-	{
-		DrawText("TRUE", 0, 0, 40, RED);
-	}
+	drawDEBUG();
 #endif // _DEBUG
-
 }
 
 void unloadTextures()
@@ -74,4 +78,6 @@ bool colitionCirCir(player SpaceShip, asteroid asteroid)
 	}
 	return false;
 }
+
+
 
