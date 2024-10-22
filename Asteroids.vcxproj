@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Asteroid.cpp" />
+    <ClCompile Include="src\Bullet.cpp" />
     <ClCompile Include="src\Button.cpp" />
     <ClCompile Include="src\Gameplay.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -29,6 +30,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Asteroid.h" />
+    <ClInclude Include="src\Bullet.h" />
     <ClInclude Include="src\Button.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Gameplay.h" />

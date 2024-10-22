@@ -3,6 +3,7 @@
 #include "raylib.h"
 
 #include "math.h"
+#include "Bullet.h"
 
 
 float spaceShipRotation(player SpaceShip)
@@ -95,5 +96,28 @@ void drawSpaceShipTexture(player SpaceShip)
 			{ SpaceShip.textureInfo.dest.width / 2, SpaceShip.textureInfo.dest.height / 2 },
 			spaceShipRotation(SpaceShip),
 			WHITE);
+	}
+}
+
+void shoot(bullet bullets[], player SpaceShip, int maxAmmo)
+{
+	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+	{
+		for (int i = 0; i < maxAmmo; i++)
+		{
+			if (bullets[i].x == -1 && bullets[i].y == -1)
+			{
+				bullets[i].x = SpaceShip.x;
+				bullets[i].y = SpaceShip.y;
+				if (bullets[i].dir.x == 0 && bullets[i].dir.y == 0)
+				{
+					bullets[i].dir = { static_cast<float>(GetMouseX() - bullets[i].x), static_cast<float>(GetMouseY() - bullets[i].y) };
+					float magnitud = static_cast<float>(sqrt(bullets[i].dir.x * bullets[i].dir.x + bullets[i].dir.y * bullets[i].dir.y));
+					bullets[i].dir.x /= magnitud;
+					bullets[i].dir.y /= magnitud;
+				}
+				break;
+			}
+		}
 	}
 }

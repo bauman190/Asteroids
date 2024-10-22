@@ -1,6 +1,8 @@
 #pragma once
 #include "raylib.h"
 
+#include "Bullet.h"
+
 struct textureInfo
 {
 	Texture spaceShipTexture;
@@ -21,8 +23,10 @@ struct player
 	textureInfo textureInfo;
 };
 
+
 float spaceShipRotation(player SpaceShip);
 void spaceShipMovment(player& SpaceShip);
 void screenLimits(player& SpaceShip);
 void inItSpaceShip(player& SpaceShip);
 void drawSpaceShipTexture(player SpaceShip);
+void shoot(bullet bullets[], player SpaceShip, int maxAmmo);
