@@ -14,6 +14,10 @@ Screen currentScreen = MainMenu;
 
 Texture backGround;
 
+float fontScale = 1.3f;
+
+Font textFont;
+
 void inIt();
 
 void checkImput();
