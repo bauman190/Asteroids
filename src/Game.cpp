@@ -47,6 +47,7 @@ void runGame()
 void inIt()
 {
 	InitWindow(windowWidth, windowHeight, "Pong");
+	textFont = LoadFont("C:/Users/bauma/OneDrive/Escritorio/impo/facu/fonts/PressStart2P-Regular.ttf");
 	inItMainMenu();
 	inItGamePlay();
 }
