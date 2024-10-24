@@ -1,11 +1,11 @@
 #pragma once
 #include "raylib.h"
 
+#include "Circle.h"
+
 struct bullet
 {
-	float x;
-	float y;
-	float radius;
+	Circle collider;
 	Vector2 dir;
 	Vector2 speed;
 	Texture texture;

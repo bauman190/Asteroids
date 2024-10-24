@@ -1,12 +1,14 @@
 #pragma once
 
+#include "Circle.h"
+
 struct asteroid
 {
-	float x;
-	float y;
-	float radius;
+	Circle collider;
 };
 
-void inItAsteroid(asteroid& asteroid);
+void inItAsteroid(asteroid asteroids[]);
 
-void drawAsteroid(asteroid asteroid);
+void drawAsteroid(asteroid asteroids[]);
+
+void destroyAsteroid(asteroid& asteroid);
