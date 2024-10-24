@@ -11,11 +11,6 @@ extern Texture backGround;
 
 static Button play;
 
-extern Font textFont;
-
-extern float fontScale;
-
-
 void checkImputMainMenu()
 {
 	if (clickButton(play))
@@ -37,8 +32,8 @@ void drawMainMenu()
 
 void inItMainMenu()
 {
-	play.button.width = static_cast<float>(MeasureTextEx(textFont, "Play", static_cast<float>(textFont.glyphs->advanceX * fontScale), 00.0f).x);
-	play.button.height = static_cast<float>(textFont.baseSize * fontScale);
+	play.button.width = 150;
+	play.button.height = 50;
 	play.button.x = static_cast<float>(GetScreenWidth() / 2 - play.button.width / 2);
 	play.button.y = static_cast<float>(GetScreenHeight() / 2);
 	play.on = LoadTexture("res/Play_on.png");

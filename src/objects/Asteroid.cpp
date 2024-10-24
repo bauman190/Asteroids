@@ -72,8 +72,6 @@ void moveAsteroids(asteroid asteroids[])
 	{
 		if (asteroids[i].collider.pos.x != -20 || asteroids[i].collider.pos.y != -20)
 		{
-
-
 			asteroids[i].collider.pos.x += asteroids[i].dir.x * asteroids[i].initialSpeed * GetFrameTime();
 			asteroids[i].collider.pos.y += asteroids[i].dir.y * asteroids[i].initialSpeed * GetFrameTime();
 
