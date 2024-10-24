@@ -28,18 +28,8 @@ void checkImputMainMenu()
 void drawMainMenu()
 {
 	DrawTexture(backGround, 0, 0, WHITE);
-
-	//DrawTextEx(textFont, "Play", { play.button.x, play.button.y }, play.button.height, 1.0f, DARKGRAY);
 	
-	drawButton(play);
-
-	/*/if (onButton(play))
-	{
-		
-		DrawRectangle(static_cast<int>(play.button.x), static_cast<int>(play.button.y), static_cast<int>(play.button.width), static_cast<int>(play.button.height), WHITE);
-		DrawTextEx(textFont, "Play", { play.button.x, play.button.y }, play.button.height, 1.0f, LIGHTGRAY);
-		
-	}*/
+	drawButton(play);	
 
 	DrawText("By: Juan Bautista Castignani", 0, static_cast<int>(GetScreenHeight() * 0.95), 25, WHITE);
 
