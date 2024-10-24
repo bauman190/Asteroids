@@ -8,7 +8,7 @@
 
 float spaceShipRotation(player SpaceShip)
 {
-	float angle = static_cast<float>(atan2(GetMousePosition().y - SpaceShip.y , GetMousePosition().x - SpaceShip.x) * (180 / PI));
+	float angle = static_cast<float>(atan2(GetMousePosition().y - SpaceShip.collider.pos.y , GetMousePosition().x - SpaceShip.collider.pos.x) * (180 / PI));
 
 	return angle;
 }
@@ -17,7 +17,7 @@ void spaceShipMovment(player& SpaceShip)
 {
 	if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 	{
-		Vector2 direction = { static_cast<float>(GetMouseX() - SpaceShip.x) , static_cast<float>(GetMouseY() - SpaceShip.y) };
+		Vector2 direction = { static_cast<float>(GetMouseX() - SpaceShip.collider.pos.x) , static_cast<float>(GetMouseY() - SpaceShip.collider.pos.y) };
 		float magnitud = static_cast<float>(sqrt(direction.x * direction.x + direction.y * direction.y));
 		direction.x /= magnitud;
 		direction.y /= magnitud;
@@ -32,38 +32,38 @@ void spaceShipMovment(player& SpaceShip)
 			SpaceShip.speed.x = (SpaceShip.speed.x / currentSpeed) * SpaceShip.maxSpeed;
 			SpaceShip.speed.y = (SpaceShip.speed.y / currentSpeed) * SpaceShip.maxSpeed;
 		}
-		SpaceShip.x = SpaceShip.x + SpaceShip.speed.x * GetFrameTime();
-		SpaceShip.y = SpaceShip.y + SpaceShip.speed.y * GetFrameTime();
-		SpaceShip.textureInfo.dest.x = SpaceShip.x;
-		SpaceShip.textureInfo.dest.y = SpaceShip.y;
+		SpaceShip.collider.pos.x = SpaceShip.collider.pos.x + SpaceShip.speed.x * GetFrameTime();
+		SpaceShip.collider.pos.y = SpaceShip.collider.pos.y + SpaceShip.speed.y * GetFrameTime();
+		SpaceShip.textureInfo.dest.x = SpaceShip.collider.pos.x;
+		SpaceShip.textureInfo.dest.y = SpaceShip.collider.pos.y;
 }
 
 void screenLimits(player& SpaceShip)
 {
-	if (SpaceShip.x >= GetScreenWidth())
+	if (SpaceShip.collider.pos.x >= GetScreenWidth())
 	{
-		SpaceShip.x = 0 + SpaceShip.radius;
+		SpaceShip.collider.pos.x = 0 + SpaceShip.collider.radius;
 	}
-	else if (SpaceShip.x <= 0)
+	else if (SpaceShip.collider.pos.x <= 0)
 	{
-		SpaceShip.x = static_cast<float>(GetScreenWidth() - SpaceShip.radius);
+		SpaceShip.collider.pos.x = static_cast<float>(GetScreenWidth() - SpaceShip.collider.radius);
 	}
-	else if (SpaceShip.y <= 0)
+	else if (SpaceShip.collider.pos.y <= 0)
 	{
-		SpaceShip.y = static_cast<float>(GetScreenHeight() - SpaceShip.radius);
+		SpaceShip.collider.pos.y = static_cast<float>(GetScreenHeight() - SpaceShip.collider.radius);
 	}
-	else if (SpaceShip.y >= GetScreenHeight())
+	else if (SpaceShip.collider.pos.y >= GetScreenHeight())
 	{
-		SpaceShip.y = 0 + SpaceShip.radius;
+		SpaceShip.collider.pos.y = 0 + SpaceShip.collider.radius;
 	}
 }
 
 void inItSpaceShip(player& SpaceShip)
 {
-	SpaceShip.x = static_cast<float>(GetScreenWidth() / 2);
-	SpaceShip.y = static_cast<float>(GetScreenHeight() / 2);
+	SpaceShip.collider.pos.x = static_cast<float>(GetScreenWidth() / 2);
+	SpaceShip.collider.pos.y = static_cast<float>(GetScreenHeight() / 2);
 	SpaceShip.speed = { 0.0f, 0.0f };
-	SpaceShip.radius = 15;
+	SpaceShip.collider.radius = 15;
 	SpaceShip.textureInfo.spaceShipTexture = LoadTexture("res/Nave2.png");
 	SpaceShip.textureInfo.movingShipTexture = LoadTexture("res/Nave1.png");
 	SpaceShip.textureInfo.source.x = 0;
@@ -72,8 +72,8 @@ void inItSpaceShip(player& SpaceShip)
 	SpaceShip.textureInfo.source.width = static_cast<float>(SpaceShip.textureInfo.spaceShipTexture.width);
 	SpaceShip.textureInfo.dest.width = static_cast<float>(SpaceShip.textureInfo.spaceShipTexture.width * 3);
 	SpaceShip.textureInfo.dest.height = static_cast<float>(SpaceShip.textureInfo.spaceShipTexture.height * 3);
-	SpaceShip.textureInfo.dest.x = SpaceShip.x;
-	SpaceShip.textureInfo.dest.y = SpaceShip.y;
+	SpaceShip.textureInfo.dest.x = SpaceShip.collider.pos.x;
+	SpaceShip.textureInfo.dest.y = SpaceShip.collider.pos.y;
 	SpaceShip.maxSpeed = 250.0f;
 }
 
@@ -105,13 +105,13 @@ void shoot(bullet bullets[], player SpaceShip, int maxAmmo)
 	{
 		for (int i = 0; i < maxAmmo; i++)
 		{
-			if (bullets[i].x == -1 && bullets[i].y == -1)
+			if (bullets[i].collider.pos.x == -1 && bullets[i].collider.pos.y == -1)
 			{
-				bullets[i].x = SpaceShip.x;
-				bullets[i].y = SpaceShip.y;
+				bullets[i].collider.pos.x = SpaceShip.collider.pos.x;
+				bullets[i].collider.pos.y = SpaceShip.collider.pos.y;
 				if (bullets[i].dir.x == 0 && bullets[i].dir.y == 0)
 				{
-					bullets[i].dir = { static_cast<float>(GetMouseX() - bullets[i].x), static_cast<float>(GetMouseY() - bullets[i].y) };
+					bullets[i].dir = { static_cast<float>(GetMouseX() - bullets[i].collider.pos.x), static_cast<float>(GetMouseY() - bullets[i].collider.pos.y) };
 					float magnitud = static_cast<float>(sqrt(bullets[i].dir.x * bullets[i].dir.x + bullets[i].dir.y * bullets[i].dir.y));
 					bullets[i].dir.x /= magnitud;
 					bullets[i].dir.y /= magnitud;

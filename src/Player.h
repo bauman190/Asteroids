@@ -2,6 +2,7 @@
 #include "raylib.h"
 
 #include "Bullet.h"
+#include "Circle.h"
 
 struct textureInfo
 {
@@ -14,10 +15,8 @@ struct textureInfo
 
 struct player
 {
-	float x;
-	float y;
+	Circle collider;
 	int lives;
-	float radius;
 	float maxSpeed;
 	Vector2 speed;
 	textureInfo textureInfo;
