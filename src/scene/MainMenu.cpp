@@ -2,8 +2,8 @@
 
 #include "raylib.h"
 
-#include "Button.h"
-#include "ScreenOptions.h"
+#include "objects/Button.h"
+#include "scene/ScreenOptions.h"
 
 extern Screen currentScreen;
 

@@ -1,4 +1,4 @@
-#include "Asteroid.h"
+#include "objects/Asteroid.h"
 
 #include "raylib.h"
 

@@ -2,11 +2,11 @@
 
 #include "raylib.h"
 
-#include "Player.h"
-#include "Asteroid.h"
+#include "objects/Player.h"
+#include "objects/Asteroid.h"
 #include "math.h"
-#include "Bullet.h"
-#include "Circle.h"
+#include "objects/Bullet.h"
+#include "tools/Circle.h"
 
 static player spaceShip;
 

@@ -1,6 +1,6 @@
-#include "Bullet.h"
+#include "objects/Bullet.h"
 
-#include "math.h"
+#include <cmath>
 
 void bulletsMovment(bullet bullets[], int maxAmmo)
 {

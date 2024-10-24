@@ -2,10 +2,10 @@
 
 #include "raylib.h"
 
-#include "Player.h"
-#include "ScreenOptions.h"
-#include "MainMenu.h"
-#include "Gameplay.h"
+#include "objects/Player.h"
+#include "scene/ScreenOptions.h"
+#include "scene/MainMenu.h"
+#include "scene/Gameplay.h"
 
 const int windowWidth = 1024;
 const int windowHeight = 768;

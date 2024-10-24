@@ -19,25 +19,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Asteroid.cpp" />
-    <ClCompile Include="src\Bullet.cpp" />
-    <ClCompile Include="src\Button.cpp" />
-    <ClCompile Include="src\Gameplay.cpp" />
+    <ClCompile Include="src\game\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\MainMenu.cpp" />
-    <ClCompile Include="src\Player.cpp" />
-    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\objects\Asteroid.cpp" />
+    <ClCompile Include="src\objects\Bullet.cpp" />
+    <ClCompile Include="src\objects\Button.cpp" />
+    <ClCompile Include="src\objects\Player.cpp" />
+    <ClCompile Include="src\scene\Gameplay.cpp" />
+    <ClCompile Include="src\scene\MainMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Asteroid.h" />
-    <ClInclude Include="src\Bullet.h" />
-    <ClInclude Include="src\Button.h" />
-    <ClInclude Include="src\Circle.h" />
-    <ClInclude Include="src\Game.h" />
-    <ClInclude Include="src\Gameplay.h" />
-    <ClInclude Include="src\MainMenu.h" />
-    <ClInclude Include="src\Player.h" />
-    <ClInclude Include="src\ScreenOptions.h" />
+    <ClInclude Include="src\game\Game.h" />
+    <ClInclude Include="src\objects\Asteroid.h" />
+    <ClInclude Include="src\objects\Bullet.h" />
+    <ClInclude Include="src\objects\Button.h" />
+    <ClInclude Include="src\objects\Player.h" />
+    <ClInclude Include="src\scene\Gameplay.h" />
+    <ClInclude Include="src\scene\MainMenu.h" />
+    <ClInclude Include="src\scene\ScreenOptions.h" />
+    <ClInclude Include="src\tools\Circle.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -113,7 +113,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\raylib-5.0_win32_msvc16\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)lib\raylib-5.0_win32_msvc16\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
@@ -131,7 +131,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\raylib-5.0_win32_msvc16\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)lib\raylib-5.0_win32_msvc16\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
@@ -150,7 +150,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\raylib-5.0_win32_msvc16\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)lib\raylib-5.0_win32_msvc16\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
@@ -168,7 +168,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\raylib-5.0_win32_msvc16\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src;$(SolutionDir)lib\raylib-5.0_win32_msvc16\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>

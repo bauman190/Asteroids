@@ -1,72 +1,88 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Archivos de origen">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="scenes">
+      <UniqueIdentifier>{c5ca9e34-d67d-4305-9d80-12c3639edbfb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de encabezado">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="scenes\gameplay">
+      <UniqueIdentifier>{880956d4-4d8e-4b41-9c81-8465252100e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de recursos">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="scenes\main_menu">
+      <UniqueIdentifier>{a9fc2c96-9ee1-4547-8bf0-c57533b472e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{d556b7fd-5bb6-4aa9-aeaf-7193ff12e98f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{834ed46d-6903-4deb-8ab2-2fe1290c8616}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="objects">
+      <UniqueIdentifier>{1836516f-550d-47e2-adae-e1f465d281a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="objects\bullet">
+      <UniqueIdentifier>{3880f5e6-a159-4218-87a5-8c7f7d6ee3be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="objects\asteroid">
+      <UniqueIdentifier>{107a168a-b0f0-4809-bac3-d01a4ede137a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="objects\player">
+      <UniqueIdentifier>{6947e0b8-3835-4e02-be5f-325523dc7f92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="objects\button">
+      <UniqueIdentifier>{6a6ff459-d5ba-4a8b-8e81-fb8b1fb42397}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\game\Game.cpp">
+      <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="src\Player.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\scene\Gameplay.cpp">
+      <Filter>scenes\gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="src\Button.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\scene\MainMenu.cpp">
+      <Filter>scenes\main_menu</Filter>
     </ClCompile>
-    <ClCompile Include="src\MainMenu.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\objects\Asteroid.cpp">
+      <Filter>objects\asteroid</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\objects\Bullet.cpp">
+      <Filter>objects\bullet</Filter>
     </ClCompile>
-    <ClCompile Include="src\Gameplay.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\objects\Button.cpp">
+      <Filter>objects\button</Filter>
     </ClCompile>
-    <ClCompile Include="src\Asteroid.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Bullet.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\objects\Player.cpp">
+      <Filter>objects\player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Player.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\scene\ScreenOptions.h">
+      <Filter>scenes</Filter>
     </ClInclude>
-    <ClInclude Include="src\Button.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\tools\Circle.h">
+      <Filter>tools</Filter>
     </ClInclude>
-    <ClInclude Include="src\ScreenOptions.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\game\Game.h">
+      <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\scene\Gameplay.h">
+      <Filter>scenes\gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="src\MainMenu.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\scene\MainMenu.h">
+      <Filter>scenes\main_menu</Filter>
     </ClInclude>
-    <ClInclude Include="src\Gameplay.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\objects\Asteroid.h">
+      <Filter>objects\asteroid</Filter>
     </ClInclude>
-    <ClInclude Include="src\Asteroid.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\objects\Bullet.h">
+      <Filter>objects\bullet</Filter>
     </ClInclude>
-    <ClInclude Include="src\Bullet.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\objects\Button.h">
+      <Filter>objects\button</Filter>
     </ClInclude>
-    <ClInclude Include="src\Circle.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\objects\Player.h">
+      <Filter>objects\player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

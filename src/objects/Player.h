@@ -1,8 +1,8 @@
 #pragma once
 #include "raylib.h"
 
-#include "Bullet.h"
-#include "Circle.h"
+#include "objects/Bullet.h"
+#include "tools/Circle.h"
 
 struct textureInfo
 {

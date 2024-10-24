@@ -1,7 +1,7 @@
 #pragma once
 #include "raylib.h"
 
-#include "Circle.h"
+#include "tools/Circle.h"
 
 struct bullet
 {
