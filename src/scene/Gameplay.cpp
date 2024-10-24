@@ -45,6 +45,7 @@ void updateGamePlay()
 	spaceShipRotation(spaceShip);
 	bulletsMovment(bullets, maxAmmo);
 	distroyBullets(bullets, maxAmmo);
+	moveAsteroids(asteroids);
 	bulletColition(bullets, asteroids);
 }
 
