@@ -19,3 +19,16 @@ bool onButton(Button button)
 	}
 	return false;
 }
+
+void drawButton(Button button)
+{
+
+	if (CheckCollisionPointRec(GetMousePosition(), button.button))
+	{
+		DrawTexture(button.on, static_cast<int>(button.button.x), static_cast<int>(button.button.y), WHITE);
+	}
+	else
+	{
+		DrawTexture(button.off, static_cast<int>(button.button.x), static_cast<int>(button.button.y), WHITE);
+	}
+}
