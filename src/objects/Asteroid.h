@@ -12,6 +12,7 @@ struct asteroid
 	float initialSpeed;
 	textureInfo textureInfo;
 	float angle;
+	bool active;
 };
 
 void inItAsteroid(asteroid asteroids[]);

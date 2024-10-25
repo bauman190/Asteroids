@@ -10,6 +10,7 @@ struct bullet
 	Vector2 speed;
 	Texture texture;
 	Vector2 initalSpeed = { 400, 400 };
+	bool active;
 };
 
 void bulletsMovment(bullet bullets[], int maxAmmo);
