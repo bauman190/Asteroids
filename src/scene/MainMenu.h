@@ -6,3 +6,5 @@ void checkImputMainMenu();
 void drawMainMenu();
 
 void inItMainMenu();
+
+void unloadMianMenuTextures();

@@ -59,3 +59,11 @@ void inItBullets(bullet bullets[], int maxAmmo)
 		bullets[i].texture = LoadTexture("res/Bullet.png");
 	}
 }
+
+void unloadBulletsTextures(bullet bullets[], int maxAmmo)
+{
+	for (int i = 0; i < maxAmmo; i++)
+	{
+		UnloadTexture(bullets[i].texture);
+	}
+}

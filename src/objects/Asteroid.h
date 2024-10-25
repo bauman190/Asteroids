@@ -23,3 +23,5 @@ void destroyAsteroid(asteroid& asteroid);
 void moveAsteroids(asteroid asteroids[]);
 
 void drawAsteroid(asteroid asteroids[]);
+
+void unloadAsteroidsTexture(asteroid asteroids[]);

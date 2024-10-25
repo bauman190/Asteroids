@@ -49,6 +49,7 @@ void updateGamePlay()
 	bulletColition(bullets, asteroids);
 }
 
+#ifdef _DEBUG
 void drawDEBUG()
 {
 	DrawCircle(static_cast<int>(spaceShip.collider.pos.x), static_cast<int>(spaceShip.collider.pos.y), spaceShip.collider.radius, WHITE);
@@ -62,6 +63,7 @@ void drawDEBUG()
 		}
 	}
 }
+#endif // _DEBUG
 
 void drawGamePlay()
 {
@@ -69,15 +71,19 @@ void drawGamePlay()
 	drawSpaceShipTexture(spaceShip);
 	drawBullet(bullets, maxAmmo);
 	drawAsteroid(asteroids);
+
 #ifdef _DEBUG
 	drawDEBUG();
 #endif // _DEBUG
 }
 
-void unloadTextures()
+void unloadGamePlayTextures()
 {
 	UnloadTexture(spaceShip.textureInfo.texture);
 	UnloadTexture(spaceShip.textureInfo.alternativeTexture);
+	UnloadTexture(space);
+	unloadAsteroidsTexture(asteroids);
+
 }
 
 bool colitionCirCir(Circle circle1, Circle circle2)

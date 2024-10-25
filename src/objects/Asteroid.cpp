@@ -127,3 +127,12 @@ void drawAsteroid(asteroid asteroids[])
 		}	
 	}
 }
+
+void unloadAsteroidsTexture(asteroid asteroids[])
+{
+	for (int i = 0; i < asteroidsAmount; i++)
+	{
+		UnloadTexture(asteroids[i].textureInfo.texture);
+	}
+}
+

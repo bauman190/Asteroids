@@ -101,7 +101,8 @@ void draw()
 
 void close()
 {
-	unloadTextures();
+	unloadGamePlayTextures();
+	unloadMianMenuTextures();
 	UnloadTexture(backGround);
 	CloseWindow();
 }

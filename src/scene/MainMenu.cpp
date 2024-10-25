@@ -46,3 +46,10 @@ void inItMainMenu()
 	backGround.height = GetScreenHeight();
 	backGround.width = GetScreenWidth();
 }
+
+void unloadMianMenuTextures()
+{
+	UnloadTexture(play.off);
+	UnloadTexture(play.on);
+	UnloadTexture(backGround);
+}
