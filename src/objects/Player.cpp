@@ -65,14 +65,14 @@ void inItSpaceShip(player& SpaceShip)
 	SpaceShip.collider.pos.y = static_cast<float>(GetScreenHeight() / 2);
 	SpaceShip.speed = { 0.0f, 0.0f };
 	SpaceShip.collider.radius = 15;
-	SpaceShip.textureInfo.spaceShipTexture = LoadTexture("res/Nave2.png");
-	SpaceShip.textureInfo.movingShipTexture = LoadTexture("res/Nave1.png");
+	SpaceShip.textureInfo.texture = LoadTexture("res/Nave2.png");
+	SpaceShip.textureInfo.alternativeTexture = LoadTexture("res/Nave1.png");
 	SpaceShip.textureInfo.source.x = 0;
 	SpaceShip.textureInfo.source.y = 0;
-	SpaceShip.textureInfo.source.height = static_cast<float>(SpaceShip.textureInfo.spaceShipTexture.height);
-	SpaceShip.textureInfo.source.width = static_cast<float>(SpaceShip.textureInfo.spaceShipTexture.width);
-	SpaceShip.textureInfo.dest.width = static_cast<float>(SpaceShip.textureInfo.spaceShipTexture.width * 3);
-	SpaceShip.textureInfo.dest.height = static_cast<float>(SpaceShip.textureInfo.spaceShipTexture.height * 3);
+	SpaceShip.textureInfo.source.height = static_cast<float>(SpaceShip.textureInfo.texture.height);
+	SpaceShip.textureInfo.source.width = static_cast<float>(SpaceShip.textureInfo.texture.width);
+	SpaceShip.textureInfo.dest.width = static_cast<float>(SpaceShip.textureInfo.texture.width * 3);
+	SpaceShip.textureInfo.dest.height = static_cast<float>(SpaceShip.textureInfo.texture.height * 3);
 	SpaceShip.textureInfo.dest.x = SpaceShip.collider.pos.x;
 	SpaceShip.textureInfo.dest.y = SpaceShip.collider.pos.y;
 	SpaceShip.maxSpeed = 250.0f;
@@ -82,7 +82,7 @@ void drawSpaceShipTexture(player SpaceShip)
 {
 	if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 	{
-		DrawTexturePro(SpaceShip.textureInfo.movingShipTexture,
+		DrawTexturePro(SpaceShip.textureInfo.alternativeTexture,
 			SpaceShip.textureInfo.source, 
 			SpaceShip.textureInfo.dest,
 			{ SpaceShip.textureInfo.dest.width / 2, SpaceShip.textureInfo.dest.height / 2 },
@@ -91,7 +91,7 @@ void drawSpaceShipTexture(player SpaceShip)
 	}
 	else if (!IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 	{
-		DrawTexturePro(SpaceShip.textureInfo.spaceShipTexture, 
+		DrawTexturePro(SpaceShip.textureInfo.texture,
 			SpaceShip.textureInfo.source,
 			SpaceShip.textureInfo.dest,
 			{ SpaceShip.textureInfo.dest.width / 2, SpaceShip.textureInfo.dest.height / 2 },

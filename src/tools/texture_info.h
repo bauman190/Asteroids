@@ -3,8 +3,8 @@
 
 struct textureInfo
 {
-	Texture spaceShipTexture;
-	Texture movingShipTexture;
+	Texture texture;
+	Texture alternativeTexture;
 	Rectangle source;
 	Rectangle dest;
 
