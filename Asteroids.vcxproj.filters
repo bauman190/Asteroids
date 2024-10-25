@@ -28,7 +28,10 @@
     <Filter Include="objects\player">
       <UniqueIdentifier>{6947e0b8-3835-4e02-be5f-325523dc7f92}</UniqueIdentifier>
     </Filter>
-    <Filter Include="objects\button">
+    <Filter Include="UI">
+      <UniqueIdentifier>{645ee74a-c79f-4040-8f80-c33cf9f8bb99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\button">
       <UniqueIdentifier>{6a6ff459-d5ba-4a8b-8e81-fb8b1fb42397}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -49,11 +52,11 @@
     <ClCompile Include="src\objects\Bullet.cpp">
       <Filter>objects\bullet</Filter>
     </ClCompile>
-    <ClCompile Include="src\objects\Button.cpp">
-      <Filter>objects\button</Filter>
-    </ClCompile>
     <ClCompile Include="src\objects\Player.cpp">
       <Filter>objects\player</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UI\Button.cpp">
+      <Filter>UI\button</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,14 +81,14 @@
     <ClInclude Include="src\objects\Bullet.h">
       <Filter>objects\bullet</Filter>
     </ClInclude>
-    <ClInclude Include="src\objects\Button.h">
-      <Filter>objects\button</Filter>
-    </ClInclude>
     <ClInclude Include="src\objects\Player.h">
       <Filter>objects\player</Filter>
     </ClInclude>
     <ClInclude Include="src\tools\texture_info.h">
       <Filter>tools</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\Button.h">
+      <Filter>UI\button</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

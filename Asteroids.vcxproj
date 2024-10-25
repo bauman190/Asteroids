@@ -23,22 +23,22 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\objects\Asteroid.cpp" />
     <ClCompile Include="src\objects\Bullet.cpp" />
-    <ClCompile Include="src\objects\Button.cpp" />
     <ClCompile Include="src\objects\Player.cpp" />
     <ClCompile Include="src\scene\Gameplay.cpp" />
     <ClCompile Include="src\scene\MainMenu.cpp" />
+    <ClCompile Include="src\UI\Button.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game\Game.h" />
     <ClInclude Include="src\objects\Asteroid.h" />
     <ClInclude Include="src\objects\Bullet.h" />
-    <ClInclude Include="src\objects\Button.h" />
     <ClInclude Include="src\objects\Player.h" />
     <ClInclude Include="src\scene\Gameplay.h" />
     <ClInclude Include="src\scene\MainMenu.h" />
     <ClInclude Include="src\scene\ScreenOptions.h" />
     <ClInclude Include="src\tools\Circle.h" />
     <ClInclude Include="src\tools\texture_info.h" />
+    <ClInclude Include="src\UI\Button.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
