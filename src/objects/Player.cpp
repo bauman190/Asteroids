@@ -7,9 +7,18 @@
 #include "Bullet.h"
 
 
+float convertToDegree(float angle)
+{
+	return angle * (180 / PI);
+}
+
 float spaceShipRotation(player SpaceShip)
 {
-	float angle = static_cast<float>(atan2(GetMousePosition().y - SpaceShip.collider.pos.y , GetMousePosition().x - SpaceShip.collider.pos.x) * (180 / PI));
+	Vector2 distance;
+	distance.x = GetMousePosition().x - SpaceShip.collider.pos.x;
+	distance.y = GetMousePosition().y - SpaceShip.collider.pos.y;
+
+	float angle = static_cast<float>(convertToDegree(atan2(distance.y , distance.x)));
 
 	return angle;
 }
