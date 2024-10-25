@@ -38,6 +38,7 @@
     <ClInclude Include="src\scene\MainMenu.h" />
     <ClInclude Include="src\scene\ScreenOptions.h" />
     <ClInclude Include="src\tools\Circle.h" />
+    <ClInclude Include="src\tools\texture_info.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

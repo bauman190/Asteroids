@@ -3,15 +3,8 @@
 
 #include "objects/Bullet.h"
 #include "tools/Circle.h"
+#include "tools/texture_info.h"
 
-struct textureInfo
-{
-	Texture spaceShipTexture;
-	Texture movingShipTexture;
-	Rectangle source;
-	Rectangle dest;
-
-};
 
 struct player
 {
