@@ -9,6 +9,7 @@ extern const int asteroidsAmount = 10;
 void inItAsteroid(asteroid asteroids[])
 {
 	int randN;
+	Texture asteroidTexture = LoadTexture("res/asteroid.png");
 
 	for (int  i = 0; i < asteroidsAmount; i++)
 	{
@@ -47,11 +48,22 @@ void inItAsteroid(asteroid asteroids[])
 		asteroids[i].dir.x /= magnitud;
 		asteroids[i].dir.y /= magnitud;
 		asteroids[i].initialSpeed = 200.0f;
+
+		asteroids[i].textureInfo.texture = asteroidTexture;
+		asteroids[i].textureInfo.source.x = 0;
+		asteroids[i].textureInfo.source.y = 0;
+		asteroids[i].textureInfo.source.height = static_cast<float>(asteroids[i].textureInfo.texture.height);
+		asteroids[i].textureInfo.source.width = static_cast<float>(asteroids[i].textureInfo.texture.width);
+		asteroids[i].textureInfo.dest.width = static_cast<float>(asteroids[i].textureInfo.texture.width * 3);
+		asteroids[i].textureInfo.dest.height = static_cast<float>(asteroids[i].textureInfo.texture.height * 3);
+		asteroids[i].textureInfo.dest.x = asteroids[i].collider.pos.x;
+		asteroids[i].textureInfo.dest.y = asteroids[i].collider.pos.y;
+		asteroids[i].angle = static_cast<float>(GetRandomValue(0, 359));
 	}
 	
 }
 
-void drawAsteroid(asteroid asteroids[])
+void drawAsteroidCollider(asteroid asteroids[])
 {
 	for (int i = 0; i < asteroidsAmount; i++)
 	{
@@ -74,6 +86,8 @@ void moveAsteroids(asteroid asteroids[])
 		{
 			asteroids[i].collider.pos.x += asteroids[i].dir.x * asteroids[i].initialSpeed * GetFrameTime();
 			asteroids[i].collider.pos.y += asteroids[i].dir.y * asteroids[i].initialSpeed * GetFrameTime();
+			asteroids[i].textureInfo.dest.x = asteroids[i].collider.pos.x;
+			asteroids[i].textureInfo.dest.y = asteroids[i].collider.pos.y;
 
 			if (asteroids[i].collider.pos.x > GetScreenWidth())
 			{
@@ -91,6 +105,25 @@ void moveAsteroids(asteroid asteroids[])
 			{
 				asteroids[i].collider.pos.y = static_cast<float>(GetScreenHeight()) - asteroids[i].collider.radius;
 			}
+
 		}
+	}
+}
+
+
+void drawAsteroid(asteroid asteroids[])
+{
+	for (int i = 0; i < asteroidsAmount; i++)
+	{
+		
+		if (asteroids[i].collider.pos.x != -20 || asteroids[i].collider.pos.y != -20)
+		{
+			DrawTexturePro(asteroids[i].textureInfo.texture,
+				asteroids[i].textureInfo.source,
+				asteroids[i].textureInfo.dest,
+				{ asteroids[i].textureInfo.dest.width / 2, asteroids[i].textureInfo.dest.height / 2 },
+				asteroids[i].angle,
+				WHITE);
+		}	
 	}
 }
