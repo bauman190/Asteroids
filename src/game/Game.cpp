@@ -7,24 +7,30 @@
 #include "scene/MainMenu.h"
 #include "scene/Gameplay.h"
 
-const int windowWidth = 1024;
-const int windowHeight = 768;
 
-Screen currentScreen = MainMenu;
+
+static const int windowWidth = 1024;
+static const int windowHeight = 768;
+
+scenes::Screen currentScreen = scenes::MainMenu;
 
 Texture backGround;
 
-void inIt();
 
-void checkImput();
+static void inIt();
 
-void update();
+static void checkImput();
 
-void draw();
+static void update();
 
-void close();
+static void draw();
 
-void runGame()
+static void close();
+
+
+
+
+void game::runGame()
 {
 	inIt();
 
@@ -40,37 +46,39 @@ void runGame()
 	close();
 }
 
-void inIt()
+
+
+static void inIt()
 {
 	InitWindow(windowWidth, windowHeight, "Pong");
-	inItMainMenu();
-	inItGamePlay();
+	scenes::inItMainMenu();
+	scenes::inItGamePlay();
 }
 
-void checkImput()
+static void checkImput()
 {
 	switch (currentScreen)
 	{
-	case MainMenu:
-		checkImputMainMenu();
+	case scenes::MainMenu:
+		scenes::checkImputMainMenu();
 		break;
-	case Gameplay:
-		checkImputGamePlay();
+	case scenes::Gameplay:
+		scenes::checkImputGamePlay();
 		break;
 	default:
 		break;
 	}
 }
 
-void update()
+static void update()
 {
 
 	switch (currentScreen)
 	{
-	case MainMenu:
+	case scenes::MainMenu:
 		break;
-	case Gameplay:
-		updateGamePlay();
+	case scenes::Gameplay:
+		scenes::updateGamePlay();
 		break;
 	default:
 		break;
@@ -78,20 +86,20 @@ void update()
 
 }
 
-void draw()
+static void draw()
 {
 	BeginDrawing();
 	ClearBackground(BLACK);
 
 	switch (currentScreen)
 	{
-	case MainMenu:
-		drawMainMenu();
+	case scenes::MainMenu:
+		scenes::drawMainMenu();
 		break;
-	case Gameplay:
-		drawGamePlay();
+	case scenes::Gameplay:
+		scenes::drawGamePlay();
 		break;
-		
+
 	default:
 		break;
 	}
@@ -99,10 +107,10 @@ void draw()
 	EndDrawing();
 }
 
-void close()
+static void close()
 {
-	unloadGamePlayTextures();
-	unloadMianMenuTextures();
+	scenes::unloadGamePlayTextures();
+	scenes::unloadMianMenuTextures();
 	UnloadTexture(backGround);
 	CloseWindow();
 }

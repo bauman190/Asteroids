@@ -1,6 +1,8 @@
 #pragma once
 #include "raylib.h"
 
+namespace tools
+{
 struct textureInfo
 {
 	Texture texture;
@@ -9,3 +11,4 @@ struct textureInfo
 	Rectangle dest;
 
 };
+}

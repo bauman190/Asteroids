@@ -1,6 +1,9 @@
 #pragma once
 #include "raylib.h"
 
+
+namespace UI
+{ 
 struct Button
 {
     Rectangle button;
@@ -13,6 +16,7 @@ bool clickButton(Button button);
 bool onButton(Button button);
 
 void drawButton(Button button);
+}
 
 
     

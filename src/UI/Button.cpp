@@ -1,6 +1,6 @@
 #include "UI/Button.h"
 
-bool clickButton(Button button)
+bool UI::clickButton(Button button)
 {
 
 	if (CheckCollisionPointRec(GetMousePosition(), button.button) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
@@ -10,7 +10,7 @@ bool clickButton(Button button)
 	return false;
 }
 
-bool onButton(Button button)
+bool UI::onButton(Button button)
 {
 
 	if (CheckCollisionPointRec(GetMousePosition(), button.button))
@@ -20,7 +20,7 @@ bool onButton(Button button)
 	return false;
 }
 
-void drawButton(Button button)
+void UI::drawButton(Button button)
 {
 
 	if (CheckCollisionPointRec(GetMousePosition(), button.button))

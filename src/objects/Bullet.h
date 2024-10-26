@@ -3,9 +3,12 @@
 
 #include "tools/Circle.h"
 
+namespace bullet
+{ 
+
 struct bullet
 {
-	Circle collider;
+	tools::Circle collider;
 	Vector2 dir;
 	Vector2 speed;
 	Texture texture;
@@ -19,3 +22,4 @@ void drawBulletsColider(bullet bullets[], int maxAmmo);
 void drawBullet(bullet bullets[], int maxAmmo);
 void inItBullets(bullet bullets[], int maxAmmo);
 void unloadBulletsTextures(bullet bullets[], int maxAmmo);
+}

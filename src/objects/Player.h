@@ -6,13 +6,15 @@
 #include "tools/texture_info.h"
 
 
+namespace player
+{ 
 struct player
 {
-	Circle collider;
+	tools::Circle collider;
 	int lives;
 	float maxSpeed;
 	Vector2 speed;
-	textureInfo textureInfo;
+	tools::textureInfo textureInfo;
 };
 
 
@@ -21,4 +23,5 @@ void spaceShipMovment(player& SpaceShip);
 void screenLimits(player& SpaceShip);
 void inItSpaceShip(player& SpaceShip);
 void drawSpaceShipTexture(player SpaceShip);
-void shoot(bullet bullets[], player SpaceShip, int maxAmmo);
+void shoot(bullet::bullet bullets[], player SpaceShip, int maxAmmo);
+}

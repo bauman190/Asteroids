@@ -6,7 +6,7 @@
 
 extern const int asteroidsAmount = 10;
 
-void inItAsteroid(asteroid asteroids[])
+void asteroid::inItAsteroid(asteroid asteroids[])
 {
 	int randN;
 	Texture asteroidTexture = LoadTexture("res/asteroid.png");
@@ -64,7 +64,7 @@ void inItAsteroid(asteroid asteroids[])
 	
 }
 
-void drawAsteroidCollider(asteroid asteroids[])
+void asteroid::drawAsteroidCollider(asteroid asteroids[])
 {
 	for (int i = 0; i < asteroidsAmount; i++)
 	{
@@ -72,7 +72,7 @@ void drawAsteroidCollider(asteroid asteroids[])
 	}
 }
 
-void destroyAsteroid(asteroid& asteroid)
+void asteroid::destroyAsteroid(asteroid& asteroid)
 {
 	asteroid.collider.pos.x = -20;
 	asteroid.collider.pos.y = -20;
@@ -80,7 +80,7 @@ void destroyAsteroid(asteroid& asteroid)
 	asteroid.active = false;
 }
 
-void moveAsteroids(asteroid asteroids[])
+void asteroid::moveAsteroids(asteroid asteroids[])
 {
 	for (int i = 0; i < asteroidsAmount; i++)
 	{
@@ -113,7 +113,7 @@ void moveAsteroids(asteroid asteroids[])
 }
 
 
-void drawAsteroid(asteroid asteroids[])
+void asteroid::drawAsteroid(asteroid asteroids[])
 {
 	for (int i = 0; i < asteroidsAmount; i++)
 	{
@@ -130,7 +130,7 @@ void drawAsteroid(asteroid asteroids[])
 	}
 }
 
-void unloadAsteroidsTexture(asteroid asteroids[])
+void asteroid::unloadAsteroidsTexture(asteroid asteroids[])
 {
 	for (int i = 0; i < asteroidsAmount; i++)
 	{

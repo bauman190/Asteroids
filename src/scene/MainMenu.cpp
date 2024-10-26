@@ -5,32 +5,34 @@
 #include "UI/Button.h"
 #include "scene/ScreenOptions.h"
 
-extern Screen currentScreen;
+extern scenes::Screen currentScreen;
 
 extern Texture backGround;
 
-static Button play;
+static UI::Button play;
 
-void checkImputMainMenu()
+
+
+void scenes::checkImputMainMenu()
 {
-	if (clickButton(play))
+	if (UI::clickButton(play))
 	{
 		currentScreen = Gameplay;
 	}
 }
 
 
-void drawMainMenu()
+void scenes::drawMainMenu()
 {
 	DrawTexture(backGround, 0, 0, WHITE);
 	
-	drawButton(play);	
+	UI::drawButton(play);
 
 	DrawText("By: Juan Bautista Castignani", 0, static_cast<int>(GetScreenHeight() * 0.95), 25, WHITE);
 
 }
 
-void inItMainMenu()
+void scenes::inItMainMenu()
 {
 	play.button.width = 150;
 	play.button.height = 50;
@@ -47,7 +49,7 @@ void inItMainMenu()
 	backGround.width = GetScreenWidth();
 }
 
-void unloadMianMenuTextures()
+void scenes::unloadMianMenuTextures()
 {
 	UnloadTexture(play.off);
 	UnloadTexture(play.on);

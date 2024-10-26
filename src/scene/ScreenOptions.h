@@ -1,6 +1,7 @@
 #pragma once
 
-
+namespace scenes
+{ 
 enum Screen
 {
     MainMenu,
@@ -15,3 +16,4 @@ enum inGameScene
     Pause,
     Win
 };
+}

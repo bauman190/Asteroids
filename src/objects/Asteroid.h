@@ -4,13 +4,16 @@
 #include "tools/Circle.h"
 #include "tools/texture_info.h"
 
+namespace asteroid
+{
+
 struct asteroid
 {
-	Circle collider;
+	tools::Circle collider;
 	Vector2 dir;
 	Vector2 speed;
 	float initialSpeed;
-	textureInfo textureInfo;
+	tools::textureInfo textureInfo;
 	float angle;
 	bool active;
 };
@@ -26,3 +29,4 @@ void moveAsteroids(asteroid asteroids[]);
 void drawAsteroid(asteroid asteroids[]);
 
 void unloadAsteroidsTexture(asteroid asteroids[]);
+}

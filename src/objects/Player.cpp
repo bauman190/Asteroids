@@ -7,12 +7,13 @@
 #include "Bullet.h"
 
 
-float convertToDegree(float angle)
+
+static float convertToDegree(float angle)
 {
 	return angle * (180 / PI);
 }
 
-float spaceShipRotation(player SpaceShip)
+float  player::spaceShipRotation(player SpaceShip)
 {
 	Vector2 distance;
 	distance.x = GetMousePosition().x - SpaceShip.collider.pos.x;
@@ -23,7 +24,7 @@ float spaceShipRotation(player SpaceShip)
 	return angle;
 }
 
-void spaceShipMovment(player& SpaceShip)
+void  player::spaceShipMovment(player& SpaceShip)
 {
 	if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 	{
@@ -48,7 +49,7 @@ void spaceShipMovment(player& SpaceShip)
 		SpaceShip.textureInfo.dest.y = SpaceShip.collider.pos.y;
 }
 
-void screenLimits(player& SpaceShip)
+void  player::screenLimits(player& SpaceShip)
 {
 	if (SpaceShip.collider.pos.x >= GetScreenWidth())
 	{
@@ -68,7 +69,7 @@ void screenLimits(player& SpaceShip)
 	}
 }
 
-void inItSpaceShip(player& SpaceShip)
+void  player::inItSpaceShip(player& SpaceShip)
 {
 	SpaceShip.collider.pos.x = static_cast<float>(GetScreenWidth() / 2);
 	SpaceShip.collider.pos.y = static_cast<float>(GetScreenHeight() / 2);
@@ -87,7 +88,7 @@ void inItSpaceShip(player& SpaceShip)
 	SpaceShip.maxSpeed = 250.0f;
 }
 
-void drawSpaceShipTexture(player SpaceShip)
+void  player::drawSpaceShipTexture(player SpaceShip)
 {
 	if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 	{
@@ -109,7 +110,7 @@ void drawSpaceShipTexture(player SpaceShip)
 	}
 }
 
-void shoot(bullet bullets[], player SpaceShip, int maxAmmo)
+void  player::shoot(bullet::bullet bullets[], player SpaceShip, int maxAmmo)
 {
 	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 	{

@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-void bulletsMovment(bullet bullets[], int maxAmmo)
+void bullet::bulletsMovment(bullet bullets[], int maxAmmo)
 {
 	for (int i = 0; i < maxAmmo; i++)
 	{
@@ -16,7 +16,7 @@ void bulletsMovment(bullet bullets[], int maxAmmo)
 	}
 }
 
-void distroyBullets(bullet bullets[], int maxAmmo)
+void bullet::distroyBullets(bullet bullets[], int maxAmmo)
 {
 	for (int i = 0; i < maxAmmo; i++)
 	{
@@ -30,7 +30,7 @@ void distroyBullets(bullet bullets[], int maxAmmo)
 	}
 }
 
-void drawBullet(bullet bullets[], int maxAmmo)
+void bullet::drawBullet(bullet bullets[], int maxAmmo)
 {
 	for (int i = 0; i < maxAmmo; i++)
 	{
@@ -41,7 +41,7 @@ void drawBullet(bullet bullets[], int maxAmmo)
 	}
 }
 
-void drawBulletsColider(bullet bullets[], int maxAmmo)
+void bullet::drawBulletsColider(bullet bullets[], int maxAmmo)
 {
 	for (int i = 0; i < maxAmmo; i++)
 	{
@@ -49,7 +49,7 @@ void drawBulletsColider(bullet bullets[], int maxAmmo)
 	}
 }
 
-void inItBullets(bullet bullets[], int maxAmmo)
+void bullet::inItBullets(bullet bullets[], int maxAmmo)
 {
 	for (int i = 0; i < maxAmmo; i++)
 	{
@@ -62,7 +62,7 @@ void inItBullets(bullet bullets[], int maxAmmo)
 	}
 }
 
-void unloadBulletsTextures(bullet bullets[], int maxAmmo)
+void bullet::unloadBulletsTextures(bullet bullets[], int maxAmmo)
 {
 	for (int i = 0; i < maxAmmo; i++)
 	{
