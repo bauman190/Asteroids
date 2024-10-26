@@ -10,7 +10,7 @@ bool UI::clickButton(Button button)
 	return false;
 }
 
-bool UI::onButton(Button button)
+ static bool onButton(UI::Button button)
 {
 
 	if (CheckCollisionPointRec(GetMousePosition(), button.button))
@@ -23,7 +23,7 @@ bool UI::onButton(Button button)
 void UI::drawButton(Button button)
 {
 
-	if (CheckCollisionPointRec(GetMousePosition(), button.button))
+	if (onButton(button))
 	{
 		DrawTexture(button.on, static_cast<int>(button.button.x), static_cast<int>(button.button.y), WHITE);
 	}

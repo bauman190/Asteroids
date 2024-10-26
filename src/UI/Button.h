@@ -13,8 +13,6 @@ struct Button
 
 bool clickButton(Button button);
 
-bool onButton(Button button);
-
 void drawButton(Button button);
 
 void inItButton(Button& button, float x, float y, Texture on, Texture off);
