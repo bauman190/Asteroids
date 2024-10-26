@@ -32,3 +32,19 @@ void UI::drawButton(Button button)
 		DrawTexture(button.off, static_cast<int>(button.button.x), static_cast<int>(button.button.y), WHITE);
 	}
 }
+
+void UI::inItButton(Button& button, float x, float y, Texture on, Texture off)
+{
+	button.button.width = 150;
+	button.button.height = 50;
+	button.button.x = x - button.button.width / 2;
+	button.button.y = y;
+	button.on = on; LoadTexture("res/Play_on.png");
+	button.off = off; LoadTexture("res/Play_off.png");
+	button.off.width = static_cast<int>(button.button.width);
+	button.off.height = static_cast<int>(button.button.height);
+	button.on.width = static_cast<int>(button.button.width);
+	button.on.height = static_cast<int>(button.button.height);
+
+
+}
