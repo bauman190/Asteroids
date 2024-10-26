@@ -13,7 +13,9 @@ static UI::Button play;
 
 static UI::Button credits;
 
+static UI::Button exit;
 
+extern bool exitGame;
 
 void scenes::checkImputMainMenu()
 {
@@ -25,6 +27,10 @@ void scenes::checkImputMainMenu()
 	{
 		currentScreen = Credits;
 	}
+	if (UI::clickButton(exit))	
+	{
+		exitGame = true;
+	}
 }
 
 
@@ -34,8 +40,7 @@ void scenes::drawMainMenu()
 	
 	UI::drawButton(play);
 	UI::drawButton(credits);
-
-	DrawText("By: Juan Bautista Castignani", 0, static_cast<int>(GetScreenHeight() * 0.95), 25, WHITE);
+	UI::drawButton(exit);
 
 }
 
@@ -52,6 +57,8 @@ void scenes::inItMainMenu()
 		play.button.y + play.button.height * 2, 
 		LoadTexture("res/Credits_on.png"), 
 		LoadTexture("res/Credits_off.png"));
+
+	UI::inItButton(exit, 100, GetScreenHeight() - 50.0f, LoadTexture("res/Exit_on.png"), LoadTexture("res/Exit_off.png"));
 
 	backGround = LoadTexture("res/MMBG.png");
 	backGround.height = GetScreenHeight();

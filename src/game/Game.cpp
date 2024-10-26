@@ -28,6 +28,7 @@ static void draw();
 
 static void close();
 
+bool exitGame = false;
 
 
 
@@ -35,7 +36,7 @@ void game::runGame()
 {
 	inIt();
 
-	while (!WindowShouldClose())
+	while (!WindowShouldClose() && !exitGame)
 	{
 		checkImput();
 
