@@ -45,6 +45,10 @@ void UI::inItButton(Button& button, float x, float y, Texture on, Texture off)
 	button.off.height = static_cast<int>(button.button.height);
 	button.on.width = static_cast<int>(button.button.width);
 	button.on.height = static_cast<int>(button.button.height);
+}
 
-
+void UI::unloadButtonTextures(Button& button)
+{
+	UnloadTexture(button.off);
+	UnloadTexture(button.on);
 }
