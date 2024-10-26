@@ -121,6 +121,7 @@ static void close()
 {
 	scenes::unloadGamePlayTextures();
 	scenes::unloadMianMenuTextures();
+	scenes::unloadCreditsTextures();
 	UnloadTexture(backGround);
 	CloseWindow();
 }

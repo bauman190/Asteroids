@@ -69,7 +69,8 @@ void scenes::inItMainMenu()
 
 void scenes::unloadMianMenuTextures()
 {
-	UnloadTexture(play.off);
-	UnloadTexture(play.on);
+	UI::unloadButtonTextures(play);
+	UI::unloadButtonTextures(exit);
+	UI::unloadButtonTextures(credits);
 	UnloadTexture(backGround);
 }

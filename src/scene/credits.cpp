@@ -32,3 +32,8 @@ void scenes::checkInputCredits()
 		currentScreen = MainMenu;
 	}
 }
+
+void scenes::unloadCreditsTextures()
+{
+	UI::unloadButtonTextures(back);
+}

@@ -8,4 +8,6 @@ namespace scenes
 	void drawCredits();
 
 	void checkInputCredits();
+
+	void unloadCreditsTextures();
 }
