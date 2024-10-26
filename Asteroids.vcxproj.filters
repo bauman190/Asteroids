@@ -34,6 +34,9 @@
     <Filter Include="UI\button">
       <UniqueIdentifier>{6a6ff459-d5ba-4a8b-8e81-fb8b1fb42397}</UniqueIdentifier>
     </Filter>
+    <Filter Include="scenes\credits">
+      <UniqueIdentifier>{19facceb-47b1-4004-bf6f-6cd4d1574391}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -57,6 +60,9 @@
     </ClCompile>
     <ClCompile Include="src\UI\Button.cpp">
       <Filter>UI\button</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\credits.cpp">
+      <Filter>scenes\credits</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +95,9 @@
     </ClInclude>
     <ClInclude Include="src\UI\Button.h">
       <Filter>UI\button</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\credits.h">
+      <Filter>scenes\credits</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

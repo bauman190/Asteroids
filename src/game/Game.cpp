@@ -6,6 +6,7 @@
 #include "scene/ScreenOptions.h"
 #include "scene/MainMenu.h"
 #include "scene/Gameplay.h"
+#include "scene/credits.h"
 
 
 
@@ -53,6 +54,7 @@ static void inIt()
 	InitWindow(windowWidth, windowHeight, "Pong");
 	scenes::inItMainMenu();
 	scenes::inItGamePlay();
+	scenes::inItCredits();
 }
 
 static void checkImput()
@@ -64,6 +66,9 @@ static void checkImput()
 		break;
 	case scenes::Gameplay:
 		scenes::checkImputGamePlay();
+		break;
+	case scenes::Credits:
+		scenes::checkInputCredits();
 		break;
 	default:
 		break;
@@ -79,6 +84,8 @@ static void update()
 		break;
 	case scenes::Gameplay:
 		scenes::updateGamePlay();
+		break;
+	case scenes::Credits:
 		break;
 	default:
 		break;
@@ -99,7 +106,9 @@ static void draw()
 	case scenes::Gameplay:
 		scenes::drawGamePlay();
 		break;
-
+	case scenes::Credits:
+		scenes::drawCredits();
+		break;
 	default:
 		break;
 	}

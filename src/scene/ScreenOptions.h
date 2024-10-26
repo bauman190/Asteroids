@@ -6,7 +6,8 @@ enum Screen
 {
     MainMenu,
     Gameplay,
-    Rules
+    Rules,
+    Credits
 };
 
 

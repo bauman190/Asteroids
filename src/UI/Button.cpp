@@ -39,8 +39,8 @@ void UI::inItButton(Button& button, float x, float y, Texture on, Texture off)
 	button.button.height = 50;
 	button.button.x = x - button.button.width / 2;
 	button.button.y = y;
-	button.on = on; LoadTexture("res/Play_on.png");
-	button.off = off; LoadTexture("res/Play_off.png");
+	button.on = on; 
+	button.off = off; 
 	button.off.width = static_cast<int>(button.button.width);
 	button.off.height = static_cast<int>(button.button.height);
 	button.on.width = static_cast<int>(button.button.width);
