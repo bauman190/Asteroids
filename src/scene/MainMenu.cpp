@@ -11,6 +11,8 @@ extern Texture backGround;
 
 static UI::Button play;
 
+static UI::Button credits;
+
 
 
 void scenes::checkImputMainMenu()
@@ -34,19 +36,16 @@ void scenes::drawMainMenu()
 
 void scenes::inItMainMenu()
 {
-	play.button.width = 150;
-	play.button.height = 50;
-	play.button.x = static_cast<float>(GetScreenWidth() / 2 - play.button.width / 2);
-	play.button.y = static_cast<float>(GetScreenHeight() / 2);
-	play.on = LoadTexture("res/Play_on.png");
-	play.off = LoadTexture("res/Play_off.png");
-	play.off.width = static_cast<int>(play.button.width);
-	play.off.height = static_cast<int>(play.button.height);
-	play.on.width = static_cast<int>(play.button.width);
-	play.on.height = static_cast<int>(play.button.height);
+	UI::inItButton(play, static_cast<float>(GetScreenWidth() / 2), 
+		static_cast<float>(GetScreenHeight() / 2), 
+		LoadTexture("res/Play_on.png"), 
+		LoadTexture("res/Play_off.png"));
+
 	backGround = LoadTexture("res/MMBG.png");
 	backGround.height = GetScreenHeight();
 	backGround.width = GetScreenWidth();
+
+
 }
 
 void scenes::unloadMianMenuTextures()
