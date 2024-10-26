@@ -59,6 +59,7 @@ void inItAsteroid(asteroid asteroids[])
 		asteroids[i].textureInfo.dest.x = asteroids[i].collider.pos.x;
 		asteroids[i].textureInfo.dest.y = asteroids[i].collider.pos.y;
 		asteroids[i].angle = static_cast<float>(GetRandomValue(0, 359));
+		asteroids[i].active = true;
 	}
 	
 }
@@ -76,13 +77,14 @@ void destroyAsteroid(asteroid& asteroid)
 	asteroid.collider.pos.x = -20;
 	asteroid.collider.pos.y = -20;
 	asteroid.dir = { 0,0 };
+	asteroid.active = false;
 }
 
 void moveAsteroids(asteroid asteroids[])
 {
 	for (int i = 0; i < asteroidsAmount; i++)
 	{
-		if (asteroids[i].collider.pos.x != -20 || asteroids[i].collider.pos.y != -20)
+		if (asteroids[i].active)
 		{
 			asteroids[i].collider.pos.x += asteroids[i].dir.x * asteroids[i].initialSpeed * GetFrameTime();
 			asteroids[i].collider.pos.y += asteroids[i].dir.y * asteroids[i].initialSpeed * GetFrameTime();
@@ -116,7 +118,7 @@ void drawAsteroid(asteroid asteroids[])
 	for (int i = 0; i < asteroidsAmount; i++)
 	{
 		
-		if (asteroids[i].collider.pos.x != -20 || asteroids[i].collider.pos.y != -20)
+		if (asteroids[i].active)
 		{
 			DrawTexturePro(asteroids[i].textureInfo.texture,
 				asteroids[i].textureInfo.source,

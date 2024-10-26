@@ -101,7 +101,7 @@ void bulletColition(bullet bulletss[], asteroid asteroidss[])
 {
 	for (int i = 0; i < maxAmmo; i++)
 	{
-		if (bulletss[i].collider.pos.x != - 1 && bulletss[i].collider.pos.y != -1)
+		if (bulletss[i].active)
 		{
 			for (int j = 0; j < asteroidsAmount; j++)
 			{
@@ -111,6 +111,7 @@ void bulletColition(bullet bulletss[], asteroid asteroidss[])
 					bulletss[i].collider.pos.x = -1;
 					bulletss[i].collider.pos.y = -1;
 					bulletss[i].dir = { 0,0 };
+					bulletss[i].active = false;
 				}
 			}
 		}

@@ -6,7 +6,7 @@ void bulletsMovment(bullet bullets[], int maxAmmo)
 {
 	for (int i = 0; i < maxAmmo; i++)
 	{
-		if (bullets[i].collider.pos.x != -1 && bullets[i].collider.pos.y != -1)
+		if (bullets[i].active)
 		{
 			bullets[i].speed.x = bullets[i].dir.x;
 			bullets[i].speed.y = bullets[i].dir.y;
@@ -25,6 +25,7 @@ void distroyBullets(bullet bullets[], int maxAmmo)
 			bullets[i].collider.pos.x = -1;
 			bullets[i].collider.pos.y = -1;
 			bullets[i].dir = { 0,0 };
+			bullets[i].active = false;
 		}
 	}
 }
@@ -57,6 +58,7 @@ void inItBullets(bullet bullets[], int maxAmmo)
 		bullets[i].collider.radius = 2;
 		bullets[i].dir = { 0,0 };
 		bullets[i].texture = LoadTexture("res/Bullet.png");
+		bullets[i].active = false;
 	}
 }
 

@@ -115,7 +115,7 @@ void shoot(bullet bullets[], player SpaceShip, int maxAmmo)
 	{
 		for (int i = 0; i < maxAmmo; i++)
 		{
-			if (bullets[i].collider.pos.x == -1 && bullets[i].collider.pos.y == -1)
+			if (!bullets[i].active)
 			{
 				bullets[i].collider.pos.x = SpaceShip.collider.pos.x;
 				bullets[i].collider.pos.y = SpaceShip.collider.pos.y;
@@ -125,6 +125,7 @@ void shoot(bullet bullets[], player SpaceShip, int maxAmmo)
 					float magnitud = static_cast<float>(sqrt(bullets[i].dir.x * bullets[i].dir.x + bullets[i].dir.y * bullets[i].dir.y));
 					bullets[i].dir.x /= magnitud;
 					bullets[i].dir.y /= magnitud;
+					bullets[i].active = true;
 				}
 				break;
 			}
