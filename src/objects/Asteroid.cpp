@@ -54,8 +54,8 @@ void asteroid::inItAsteroid(asteroid asteroids[])
 		asteroids[i].textureInfo.source.y = 0;
 		asteroids[i].textureInfo.source.height = static_cast<float>(asteroids[i].textureInfo.texture.height);
 		asteroids[i].textureInfo.source.width = static_cast<float>(asteroids[i].textureInfo.texture.width);
-		asteroids[i].textureInfo.dest.width = static_cast<float>(asteroids[i].textureInfo.texture.width * 3);
-		asteroids[i].textureInfo.dest.height = static_cast<float>(asteroids[i].textureInfo.texture.height * 3);
+		asteroids[i].textureInfo.dest.width = asteroids[i].collider.radius * 2;//static_cast<float>(asteroids[i].textureInfo.texture.width * 3);
+		asteroids[i].textureInfo.dest.height = asteroids[i].collider.radius * 2;//static_cast<float>(asteroids[i].textureInfo.texture.height * 3);
 		asteroids[i].textureInfo.dest.x = asteroids[i].collider.pos.x;
 		asteroids[i].textureInfo.dest.y = asteroids[i].collider.pos.y;
 		asteroids[i].angle = static_cast<float>(GetRandomValue(0, 359));
