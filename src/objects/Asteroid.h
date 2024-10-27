@@ -18,15 +18,15 @@ struct asteroid
 	bool active;
 };
 
-void inItAsteroid(asteroid asteroids[]);
+void inItAsteroid(asteroid& asteroids, float speed, float radius);
 
-void drawAsteroidCollider(asteroid asteroids[]);
+void drawAsteroidCollider(asteroid asteroids);
 
 void destroyAsteroid(asteroid& asteroid);
 
-void moveAsteroids(asteroid asteroids[]);
+void moveAsteroid(asteroid& asteroids);
 
-void drawAsteroid(asteroid asteroids[]);
+void drawAsteroid(asteroid asteroids);
 
-void unloadAsteroidsTexture(asteroid asteroids[]);
+void unloadAsteroidsTexture(asteroid& asteroids);
 }
