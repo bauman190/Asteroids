@@ -110,6 +110,10 @@ void  player::drawSpaceShipTexture(player SpaceShip)
 			spaceShipRotation(SpaceShip),
 			WHITE);
 	}
+	if (SpaceShip.immune)
+	{		
+		DrawCircle(static_cast<int>(SpaceShip.collider.pos.x), static_cast<int>(SpaceShip.collider.pos.y), SpaceShip.collider.radius * 2, ColorAlpha(BLUE, 0.3f));
+	}
 }
 
 void  player::shoot(bullet::bullet bullets[], player SpaceShip, int maxAmmo)
