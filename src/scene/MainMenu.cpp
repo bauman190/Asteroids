@@ -17,6 +17,8 @@ static UI::Button exit;
 
 extern bool exitGame;
 
+static Music music;
+
 void scenes::checkImputMainMenu()
 {
 	if (UI::clickButton(play))
@@ -60,11 +62,12 @@ void scenes::inItMainMenu()
 
 	UI::inItButton(exit, 100, GetScreenHeight() - 50.0f, LoadTexture("res/Exit_on.png"), LoadTexture("res/Exit_off.png"));
 
+	music = LoadMusicStream("res/Asteroids_menu.wav");
+	music.looping = true;
+	PlayMusicStream(music);
 	backGround = LoadTexture("res/MMBG.png");
 	backGround.height = GetScreenHeight();
 	backGround.width = GetScreenWidth();
-
-
 }
 
 void scenes::unloadMianMenuTextures()
@@ -72,5 +75,11 @@ void scenes::unloadMianMenuTextures()
 	UI::unloadButtonTextures(play);
 	UI::unloadButtonTextures(exit);
 	UI::unloadButtonTextures(credits);
+	UnloadMusicStream(music);
 	UnloadTexture(backGround);
+}
+
+void scenes::updateMenu()
+{
+	UpdateMusicStream(music);
 }

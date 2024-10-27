@@ -35,7 +35,6 @@ bool exitGame = false;
 void game::runGame()
 {
 	inIt();
-
 	while (!WindowShouldClose() && !exitGame)
 	{
 		checkImput();
@@ -53,6 +52,7 @@ void game::runGame()
 static void inIt()
 {
 	InitWindow(windowWidth, windowHeight, "Pong");
+	InitAudioDevice();
 	scenes::inItMainMenu();
 	scenes::inItGamePlay();
 	scenes::inItCredits();
@@ -82,6 +82,7 @@ static void update()
 	switch (currentScreen)
 	{
 	case scenes::MainMenu:
+		scenes::updateMenu();
 		break;
 	case scenes::Gameplay:
 		scenes::updateGamePlay();
@@ -123,5 +124,6 @@ static void close()
 	scenes::unloadMianMenuTextures();
 	scenes::unloadCreditsTextures();
 	UnloadTexture(backGround);
+	CloseAudioDevice();
 	CloseWindow();
 }
