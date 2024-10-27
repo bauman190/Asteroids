@@ -15,6 +15,7 @@ struct player
 	float maxSpeed;
 	Vector2 speed;
 	tools::textureInfo textureInfo;
+	bool immune; 
 };
 
 
@@ -24,4 +25,5 @@ void screenLimits(player& SpaceShip);
 void inItSpaceShip(player& SpaceShip);
 void drawSpaceShipTexture(player SpaceShip);
 void shoot(bullet::bullet bullets[], player SpaceShip, int maxAmmo);
+void loseLife(player& SpaceShip);
 }

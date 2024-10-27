@@ -86,6 +86,8 @@ void  player::inItSpaceShip(player& SpaceShip)
 	SpaceShip.textureInfo.dest.x = SpaceShip.collider.pos.x;
 	SpaceShip.textureInfo.dest.y = SpaceShip.collider.pos.y;
 	SpaceShip.maxSpeed = 250.0f;
+	SpaceShip.immune = false;
+	SpaceShip.lives = 3;
 }
 
 void  player::drawSpaceShipTexture(player SpaceShip)
@@ -132,4 +134,9 @@ void  player::shoot(bullet::bullet bullets[], player SpaceShip, int maxAmmo)
 			}
 		}
 	}
+}
+
+void player::loseLife(player& SpaceShip)
+{
+	SpaceShip.lives--;
 }

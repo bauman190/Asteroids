@@ -20,10 +20,13 @@ static const int maxAmmo = 10;
 
 static bullet::bullet bullets[maxAmmo];
 
+static float timer = 0.0f;
 
 static bool colitionCirCir(tools::Circle circle1, tools::Circle circle2);
 
-static void bulletColition(bullet::bullet bullets[], asteroid::asteroid asterois[]);
+static void bulletColition(bullet::bullet bullets[]);
+
+static bool collitionPlayerAsteroid();
 
 
 void scenes::inItGamePlay()
@@ -48,7 +51,25 @@ void scenes::updateGamePlay()
 	bullet::bulletsMovment(bullets, maxAmmo);
 	bullet::distroyBullets(bullets, maxAmmo);
 	asteroid::moveAsteroids(asteroids);
-	bulletColition(bullets, asteroids);
+
+	if (!spaceShip.immune && collitionPlayerAsteroid())
+	{
+		player::loseLife(spaceShip);
+		spaceShip.immune = true;
+		timer = 0.0f;
+	}
+
+	if (spaceShip.immune)
+	{
+		timer += GetFrameTime();
+	}
+
+	if (timer >= 2)
+	{
+		spaceShip.immune = false;
+		timer = 0;
+	}
+	bulletColition(bullets);
 }
 
 #ifdef _DEBUG
@@ -64,6 +85,7 @@ void drawDEBUG()
 			DrawText("TRUE", 0, 0, 40, RED);
 		}
 	}
+	DrawText(TextFormat("Lives: %02i", spaceShip.lives), 20, 20, 40, BLUE);
 }
 #endif // _DEBUG
 
@@ -88,7 +110,7 @@ void scenes::unloadGamePlayTextures()
 
 }
 
-bool colitionCirCir(tools::Circle circle1, tools::Circle circle2)
+static bool colitionCirCir(tools::Circle circle1, tools::Circle circle2)
 {
 	float distance = static_cast<float>(sqrt(pow(circle1.pos.x - circle2.pos.x, 2) + pow(circle1.pos.y - circle2.pos.y, 2)));
 	if (distance <= circle1.radius + circle2.radius)
@@ -99,7 +121,7 @@ bool colitionCirCir(tools::Circle circle1, tools::Circle circle2)
 }
 
 
-void bulletColition(bullet::bullet bulletss[], asteroid::asteroid asteroidss[])
+static void bulletColition(bullet::bullet bulletss[])
 {
 	for (int i = 0; i < maxAmmo; i++)
 	{
@@ -107,9 +129,9 @@ void bulletColition(bullet::bullet bulletss[], asteroid::asteroid asteroidss[])
 		{
 			for (int j = 0; j < asteroidsAmount; j++)
 			{
-				if (colitionCirCir(bulletss[i].collider, asteroidss[j].collider))
+				if (colitionCirCir(bulletss[i].collider, asteroids[j].collider))
 				{
-					asteroid::destroyAsteroid(asteroidss[j]);
+					asteroid::destroyAsteroid(asteroids[j]);
 					bulletss[i].collider.pos.x = -1;
 					bulletss[i].collider.pos.y = -1;
 					bulletss[i].dir = { 0,0 };
@@ -118,6 +140,24 @@ void bulletColition(bullet::bullet bulletss[], asteroid::asteroid asteroidss[])
 			}
 		}
 	}
+}
+
+static bool collitionPlayerAsteroid()
+{
+	bool colided = false;
+
+	for (int i = 0; i < asteroidsAmount; i++)
+	{
+		if (asteroids[i].active)
+		{
+			colided = colitionCirCir(spaceShip.collider, asteroids[i].collider);
+			if (colided)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
 
