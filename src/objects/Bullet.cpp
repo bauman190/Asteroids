@@ -55,9 +55,11 @@ void bullet::inItBullets(bullet bullets[], int maxAmmo)
 	{
 		bullets[i].collider.pos.x = -1;
 		bullets[i].collider.pos.y = -1;
-		bullets[i].collider.radius = 2;
+		bullets[i].collider.radius = 5;
 		bullets[i].dir = { 0,0 };
 		bullets[i].texture = LoadTexture("res/Bullet.png");
+		bullets[i].texture.height = static_cast<int>(bullets[i].collider.radius * 2);
+		bullets[i].texture.width = static_cast<int>(bullets[i].collider.radius * 2);
 		bullets[i].active = false;
 	}
 }
