@@ -32,4 +32,5 @@ void unloadAsteroidsTexture(asteroid& asteroids);
 
 void restartAsteroid(asteroid& asteroids);
 
+void increasSpeed(asteroid& asteroid);
 }

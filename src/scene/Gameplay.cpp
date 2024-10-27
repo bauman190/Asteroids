@@ -48,6 +48,8 @@ static bool checkAsteroidActive();
 
 static void restartAllasteroids();
 
+static void increasAllAsteroidsSpeed();
+
 void scenes::inItGamePlay()
 {
 	player::inItSpaceShip(spaceShip);
@@ -92,6 +94,7 @@ void scenes::updateGamePlay()
 	if (!checkAsteroidActive())
 	{
 		restartAllasteroids();
+		increasAllAsteroidsSpeed();
 	}
 
 	bulletColition(bullets);
@@ -260,7 +263,7 @@ static bool collitionPlayerAsteroid()
 
 static void inItAllAsteroids()
 {
-	float speed = 250.0f;
+	float speed = 75.0f;
 	float radius = 15.0f;
 	for (int i = 0; i < smallAsteroidsAmount; i++)
 	{	
@@ -270,7 +273,7 @@ static void inItAllAsteroids()
 				asteroid::destroyAsteroid(smallAsteroids[i]);
 			}
 	}
-	speed = 200.0f;
+	speed = 30.0f;
 	radius = 25.0f;
 
 	for (int i = 0; i < midAsteroidsAmount; i++)
@@ -282,7 +285,7 @@ static void inItAllAsteroids()
 		}
 	}
 
-	speed = 150.0f;
+	speed = 20.0f;
 	radius = 35.0f;
 	for (int i = 0; i < bigAsteroidsAmount; i++)
 	{
@@ -371,4 +374,26 @@ static bool checkAsteroidActive()
 		}
 	}
 	return false;
+}
+
+static void increasAllAsteroidsSpeed()
+{
+	float smallMaxSpeed = 100.0f;
+	float midMaxSpeed = 50.0f;
+	float bigMaxSpeed = 30.0f;
+	for (int i = 0; i < smallAsteroidsAmount; i++)
+	{
+		if (smallAsteroids[i].initialSpeed < smallMaxSpeed)
+		{
+			asteroid::increasSpeed(smallAsteroids[i]);
+		}
+		if (i < midAsteroidsAmount && midAsteroids[i].initialSpeed < midMaxSpeed)
+		{
+			asteroid::increasSpeed(midAsteroids[i]);
+		}
+		if ((i < bigAsteroidsAmount && bigAsteroids[i].initialSpeed < bigMaxSpeed))
+		{
+			asteroid::increasSpeed(midAsteroids[i]);
+		}
+	}
 }

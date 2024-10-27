@@ -159,3 +159,8 @@ void asteroid::restartAsteroid(asteroid& asteroids)
 	asteroids.angle = static_cast<float>(GetRandomValue(0, 359));
 	asteroids.active = true;
 }
+
+void asteroid::increasSpeed(asteroid& asteroid)
+{
+	asteroid.initialSpeed += 10.0f;
+}
