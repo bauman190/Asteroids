@@ -37,8 +37,8 @@ void asteroid::inItAsteroid(asteroid& asteroids, float speed, float radius)
 		}
 		asteroids.collider.radius = radius;
 
-		asteroids.dir.x = GetRandomValue(-GetScreenWidth(), GetScreenWidth()) - asteroids.collider.pos.x;
-		asteroids.dir.y = GetRandomValue(-GetScreenHeight(), GetScreenHeight()) - asteroids.collider.pos.y;
+		asteroids.dir.x = GetRandomValue(0, GetScreenWidth()) - asteroids.collider.pos.x;
+		asteroids.dir.y = GetRandomValue(0, GetScreenHeight()) - asteroids.collider.pos.y;
 		float magnitud = static_cast<float>(sqrt(asteroids.dir.x * asteroids.dir.x + asteroids.dir.y * asteroids.dir.y));
 		asteroids.dir.x /= magnitud;
 		asteroids.dir.y /= magnitud;
@@ -121,3 +121,41 @@ void asteroid::unloadAsteroidsTexture(asteroid& asteroids)
 		UnloadTexture(asteroids.textureInfo.texture);	
 }
 
+
+void asteroid::restartAsteroid(asteroid& asteroids)
+{
+	int randN = GetRandomValue(0, 1);
+	if (randN == 0)
+	{
+		randN = GetRandomValue(0, 1);
+		asteroids.collider.pos.x = static_cast<float>(GetRandomValue(0, GetScreenWidth()));
+		if (randN == 0)
+		{
+			asteroids.collider.pos.y = 0;
+		}
+		else
+		{
+			asteroids.collider.pos.y = static_cast<float>(GetScreenHeight());
+		}
+	}
+	else
+	{
+		randN = GetRandomValue(0, 1);
+		if (randN == 0)
+		{
+			asteroids.collider.pos.x = 0;
+		}
+		else
+		{
+			asteroids.collider.pos.x = static_cast<float>(GetScreenWidth());
+		}
+		asteroids.collider.pos.y = static_cast<float>(GetRandomValue(0, GetScreenHeight()));
+	}
+	asteroids.dir.x = GetRandomValue(0, GetScreenWidth()) - asteroids.collider.pos.x;
+	asteroids.dir.y = GetRandomValue(0, GetScreenHeight()) - asteroids.collider.pos.y;
+	float magnitud = static_cast<float>(sqrt(asteroids.dir.x * asteroids.dir.x + asteroids.dir.y * asteroids.dir.y));
+	asteroids.dir.x /= magnitud;
+	asteroids.dir.y /= magnitud;
+	asteroids.angle = static_cast<float>(GetRandomValue(0, 359));
+	asteroids.active = true;
+}

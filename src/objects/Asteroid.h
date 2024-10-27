@@ -29,4 +29,7 @@ void moveAsteroid(asteroid& asteroids);
 void drawAsteroid(asteroid asteroids);
 
 void unloadAsteroidsTexture(asteroid& asteroids);
+
+void restartAsteroid(asteroid& asteroids);
+
 }

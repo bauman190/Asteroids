@@ -12,11 +12,11 @@ static  player::player spaceShip;
 
 static Texture space;
 
-const int bigAsteroidsAmount = 4;
+static const int bigAsteroidsAmount = 4;
 
-const int midAsteroidsAmount = bigAsteroidsAmount * 2;
+static const int midAsteroidsAmount = bigAsteroidsAmount * 2;
 
-const int smallAsteroidsAmount = midAsteroidsAmount * 2;
+static const int smallAsteroidsAmount = midAsteroidsAmount * 2;
 
 static asteroid::asteroid midAsteroids[midAsteroidsAmount];
 
@@ -42,6 +42,11 @@ static void moveAllAsteroids();
 
 static void drawAllAsteroids();
 
+static void restartAllasteroids();
+
+static bool checkAsteroidActive();
+
+static void restartAllasteroids();
 
 void scenes::inItGamePlay()
 {
@@ -83,6 +88,12 @@ void scenes::updateGamePlay()
 		spaceShip.immune = false;
 		timer = 0;
 	}
+
+	if (!checkAsteroidActive())
+	{
+		restartAllasteroids();
+	}
+
 	bulletColition(bullets);
 }
 
@@ -319,3 +330,45 @@ static void drawAllAsteroids()
 	}
 }
 
+static void restartAllasteroids()
+{
+	for (int i = 0; i < smallAsteroidsAmount; i++)
+	{
+		asteroid::restartAsteroid(smallAsteroids[i]);
+
+		if (i < midAsteroidsAmount)
+		{
+			asteroid::restartAsteroid(midAsteroids[i]);
+		}
+		if (i < bigAsteroidsAmount)
+		{
+			asteroid::restartAsteroid(bigAsteroids[i]);
+		}
+	}
+}
+
+static bool checkAsteroidActive()
+{
+	for (int i = 0; i < smallAsteroidsAmount; i++)
+	{
+		if (smallAsteroids[i].active)
+		{
+			return true;
+		}
+		if (i < midAsteroidsAmount)
+		{
+			if (midAsteroids[i].active)
+			{
+				return true;
+			}
+		}
+		if (i < bigAsteroidsAmount)
+		{
+			if (bigAsteroids[i].active)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
