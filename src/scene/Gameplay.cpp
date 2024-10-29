@@ -9,6 +9,7 @@
 #include "objects/Bullet.h"
 #include "tools/Circle.h"
 #include "pause.h"
+#include "game_over.h"
 
 scenes::inGameScene inGameStatus = scenes::Game;
 
@@ -53,6 +54,7 @@ void scenes::inItGamePlay()
 	inItPause();
 	clearAsteroids();
 	inItAllAsteroids();
+	inItGameOver();
 	bullet::inItBullets(bullets, maxAmmo);
 	space = LoadTexture("res/space.png");
 	music = LoadMusicStream("res/Asteroids Gameplay.wav");
@@ -78,6 +80,9 @@ void scenes::checkImputGamePlay()
 		break;
 	case scenes::Pause:
 		scenes::inputPause();
+		break;
+	case scenes::GameOver:
+		scenes::inPutGameOver();
 		break;
 	default:
 		break;
@@ -125,8 +130,14 @@ void scenes::updateGamePlay()
 			inItAllAsteroids();
 			maxAsteroidsOnScreen += 3;
 		}
+		if (spaceShip.lives <= 0)
+		{
+			inGameStatus = GameOver;
+		}
 		break;
 	case scenes::Pause:
+		break;
+	case scenes::GameOver:
 		break;
 	default:
 		break;
@@ -169,6 +180,9 @@ void scenes::drawGamePlay()
 		bullet::drawBullet(bullets, maxAmmo);
 		drawAllAsteroids();
 		scenes::drawPause();
+		break;
+	case scenes::GameOver:
+		drawGameOver();
 		break;
 	default:
 		break;

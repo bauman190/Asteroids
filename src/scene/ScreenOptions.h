@@ -15,6 +15,6 @@ enum inGameScene
 {
     Game,
     Pause,
-    Win
+    GameOver,
 };
 }

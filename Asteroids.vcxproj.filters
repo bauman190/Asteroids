@@ -40,6 +40,9 @@
     <Filter Include="scenes\pause">
       <UniqueIdentifier>{8b3ab03a-4592-4315-ab11-b605c497b989}</UniqueIdentifier>
     </Filter>
+    <Filter Include="scenes\game_over">
+      <UniqueIdentifier>{8526a0ce-3b5c-4e84-911e-175bd77194cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -69,6 +72,9 @@
     </ClCompile>
     <ClCompile Include="src\scene\pause.cpp">
       <Filter>scenes\pause</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\game_over.cpp">
+      <Filter>scenes\game_over</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +113,9 @@
     </ClInclude>
     <ClInclude Include="src\scene\pause.h">
       <Filter>scenes\pause</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\game_over.h">
+      <Filter>scenes\game_over</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

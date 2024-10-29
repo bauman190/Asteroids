@@ -26,6 +26,7 @@
     <ClCompile Include="src\objects\Player.cpp" />
     <ClCompile Include="src\scene\credits.cpp" />
     <ClCompile Include="src\scene\Gameplay.cpp" />
+    <ClCompile Include="src\scene\game_over.cpp" />
     <ClCompile Include="src\scene\MainMenu.cpp" />
     <ClCompile Include="src\scene\pause.cpp" />
     <ClCompile Include="src\UI\Button.cpp" />
@@ -37,6 +38,7 @@
     <ClInclude Include="src\objects\Player.h" />
     <ClInclude Include="src\scene\credits.h" />
     <ClInclude Include="src\scene\Gameplay.h" />
+    <ClInclude Include="src\scene\game_over.h" />
     <ClInclude Include="src\scene\MainMenu.h" />
     <ClInclude Include="src\scene\pause.h" />
     <ClInclude Include="src\scene\ScreenOptions.h" />
