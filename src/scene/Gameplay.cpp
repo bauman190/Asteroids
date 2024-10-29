@@ -130,7 +130,7 @@ void scenes::updateGamePlay()
 			inItAllAsteroids();
 			maxAsteroidsOnScreen += 3;
 		}
-		if (spaceShip.lives <= 0)
+		if (spaceShip.lives < 0)
 		{
 			inGameStatus = GameOver;
 		}
