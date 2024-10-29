@@ -3,8 +3,9 @@
 #include "raylib.h"
 #include <cmath>
 
-void asteroid::inItAsteroid(asteroid& asteroids, float speed, float radius)
+aster::asteroid aster::inItAsteroid(float speed, float radius)
 {
+	aster::asteroid asteroid;
 	int randN;
 	Texture asteroidTexture = LoadTexture("res/asteroid.png");
 
@@ -12,14 +13,14 @@ void asteroid::inItAsteroid(asteroid& asteroids, float speed, float radius)
 		if (randN == 0)
 		{
 			randN = GetRandomValue(0, 1);
-			asteroids.collider.pos.x = static_cast<float>(GetRandomValue(0, GetScreenWidth()));
+			asteroid.collider.pos.x = static_cast<float>(GetRandomValue(0, GetScreenWidth()));
 			if (randN == 0)
 			{
-				asteroids.collider.pos.y = 0;
+				asteroid.collider.pos.y = 0;
 			}
 			else
 			{
-				asteroids.collider.pos.y = static_cast<float>(GetScreenHeight());
+				asteroid.collider.pos.y = static_cast<float>(GetScreenHeight());
 			}
 		}
 		else
@@ -27,43 +28,45 @@ void asteroid::inItAsteroid(asteroid& asteroids, float speed, float radius)
 			randN = GetRandomValue(0, 1);
 			if (randN == 0)
 			{
-				asteroids.collider.pos.x = 0;
+				asteroid.collider.pos.x = 0;
 			}
 			else
 			{
-				asteroids.collider.pos.x = static_cast<float>(GetScreenWidth());
+				asteroid.collider.pos.x = static_cast<float>(GetScreenWidth());
 			}
-			asteroids.collider.pos.y = static_cast<float>(GetRandomValue(0, GetScreenHeight()));
+			asteroid.collider.pos.y = static_cast<float>(GetRandomValue(0, GetScreenHeight()));
 		}
-		asteroids.collider.radius = radius;
+		asteroid.collider.radius = radius;
 
-		asteroids.dir.x = GetRandomValue(0, GetScreenWidth()) - asteroids.collider.pos.x;
-		asteroids.dir.y = GetRandomValue(0, GetScreenHeight()) - asteroids.collider.pos.y;
-		float magnitud = static_cast<float>(sqrt(asteroids.dir.x * asteroids.dir.x + asteroids.dir.y * asteroids.dir.y));
-		asteroids.dir.x /= magnitud;
-		asteroids.dir.y /= magnitud;
-		asteroids.initialSpeed = speed;
+		asteroid.dir.x = GetRandomValue(0, GetScreenWidth()) - asteroid.collider.pos.x;
+		asteroid.dir.y = GetRandomValue(0, GetScreenHeight()) - asteroid.collider.pos.y;
+		float magnitud = static_cast<float>(sqrt(asteroid.dir.x * asteroid.dir.x + asteroid.dir.y * asteroid.dir.y));
+		asteroid.dir.x /= magnitud;
+		asteroid.dir.y /= magnitud;
+		asteroid.initialSpeed = speed;
 
-		asteroids.textureInfo.texture = asteroidTexture;
-		asteroids.textureInfo.source.x = 0;
-		asteroids.textureInfo.source.y = 0;
-		asteroids.textureInfo.source.height = static_cast<float>(asteroids.textureInfo.texture.height);
-		asteroids.textureInfo.source.width = static_cast<float>(asteroids.textureInfo.texture.width);
-		asteroids.textureInfo.dest.width = asteroids.collider.radius * 2;
-		asteroids.textureInfo.dest.height = asteroids.collider.radius * 2;
-		asteroids.textureInfo.dest.x = asteroids.collider.pos.x;
-		asteroids.textureInfo.dest.y = asteroids.collider.pos.y;
-		asteroids.angle = static_cast<float>(GetRandomValue(0, 359));
-		asteroids.active = true;
-		
+		asteroid.textureInfo.texture = asteroidTexture;
+		asteroid.textureInfo.source.x = 0;
+		asteroid.textureInfo.source.y = 0;
+		asteroid.textureInfo.source.height = static_cast<float>(asteroid.textureInfo.texture.height);
+		asteroid.textureInfo.source.width = static_cast<float>(asteroid.textureInfo.texture.width);
+		asteroid.textureInfo.dest.width = asteroid.collider.radius * 2;
+		asteroid.textureInfo.dest.height = asteroid.collider.radius * 2;
+		asteroid.textureInfo.dest.x = asteroid.collider.pos.x;
+		asteroid.textureInfo.dest.y = asteroid.collider.pos.y;
+		asteroid.angle = static_cast<float>(GetRandomValue(0, 359));
+		asteroid.active = true;
+		asteroid.size = aster::medium;
+
+	return asteroid;
 }
 
-void asteroid::drawAsteroidCollider(asteroid asteroids)
+void aster::drawAsteroidCollider(asteroid& asteroids)
 {
 	DrawCircle(static_cast<int>(asteroids.collider.pos.x), static_cast<int>(asteroids.collider.pos.y), asteroids.collider.radius, RED);	
 }
 
-void asteroid::destroyAsteroid(asteroid& asteroid)
+void aster::destroyAsteroid(asteroid& asteroid)
 {
 	asteroid.collider.pos.x = -20;
 	asteroid.collider.pos.y = -20;
@@ -71,7 +74,7 @@ void asteroid::destroyAsteroid(asteroid& asteroid)
 	asteroid.active = false;
 }
 
-void asteroid::moveAsteroid(asteroid& asteroids)
+void aster::moveAsteroid(asteroid& asteroids)
 {
 		if (asteroids.active)
 		{
@@ -101,9 +104,8 @@ void asteroid::moveAsteroid(asteroid& asteroids)
 }
 
 
-void asteroid::drawAsteroid(asteroid asteroids)
+void aster::drawAsteroid(asteroid& asteroids)
 {
-	
 		if (asteroids.active)
 		{
 			DrawTexturePro(asteroids.textureInfo.texture,
@@ -116,13 +118,13 @@ void asteroid::drawAsteroid(asteroid asteroids)
 	
 }
 
-void asteroid::unloadAsteroidsTexture(asteroid& asteroids)
+void aster::unloadAsteroidsTexture(asteroid& asteroids)
 {
 		UnloadTexture(asteroids.textureInfo.texture);	
 }
 
 
-void asteroid::restartAsteroid(asteroid& asteroids)
+void aster::restartAsteroid(asteroid& asteroids)
 {
 	int randN = GetRandomValue(0, 1);
 	if (randN == 0)
@@ -160,7 +162,7 @@ void asteroid::restartAsteroid(asteroid& asteroids)
 	asteroids.active = true;
 }
 
-void asteroid::increasSpeed(asteroid& asteroid)
+void aster::increasSpeed(asteroid& asteroid)
 {
 	asteroid.initialSpeed += 10.0f;
 }

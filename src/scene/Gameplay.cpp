@@ -2,6 +2,7 @@
 
 #include "raylib.h"
 #include <cmath>
+#include <list>
 
 #include "objects/Player.h"
 #include "objects/Asteroid.h"
@@ -12,17 +13,7 @@ static  player::player spaceShip;
 
 static Texture space;
 
-static const int bigAsteroidsAmount = 4;
-
-static const int midAsteroidsAmount = bigAsteroidsAmount * 2;
-
-static const int smallAsteroidsAmount = midAsteroidsAmount * 2;
-
-static asteroid::asteroid midAsteroids[midAsteroidsAmount];
-
-static asteroid::asteroid bigAsteroids[bigAsteroidsAmount];
-
-static asteroid::asteroid smallAsteroids[smallAsteroidsAmount];
+static std::list<aster::asteroid> asteroids;
 
 static const int maxAmmo = 10;
 
@@ -42,13 +33,13 @@ static void moveAllAsteroids();
 
 static void drawAllAsteroids();
 
-static void restartAllasteroids();
+//static void restartAllasteroids();
 
-static bool checkAsteroidActive();
+//static bool checkAsteroidActive();
 
-static void restartAllasteroids();
+//static void restartAllasteroids();
 
-static void increasAllAsteroidsSpeed();
+//static void increasAllAsteroidsSpeed();
 
 void scenes::inItGamePlay()
 {
@@ -67,6 +58,7 @@ void scenes::checkImputGamePlay()
 
 void scenes::updateGamePlay()
 {
+	bulletColition(bullets);
 	player::screenLimits(spaceShip);
 	player::spaceShipRotation(spaceShip);
 	bullet::bulletsMovment(bullets, maxAmmo);
@@ -91,33 +83,21 @@ void scenes::updateGamePlay()
 		timer = 0;
 	}
 
-	if (!checkAsteroidActive())
+	/*/if (!checkAsteroidActive())
 	{
-		restartAllasteroids();
+		//restartAllasteroids();
 		increasAllAsteroidsSpeed();
-	}
-
-	bulletColition(bullets);
+	}*/
 }
 
 #ifdef _DEBUG
 void drawDEBUG()
 {
 	DrawCircle(static_cast<int>(spaceShip.collider.pos.x), static_cast<int>(spaceShip.collider.pos.y), spaceShip.collider.radius, WHITE);
-	for (int i = 0; i < smallAsteroidsAmount; i++)
+	for (auto it = asteroids.begin(); it != asteroids.end(); ++it)
 	{
-		asteroid::drawAsteroidCollider(smallAsteroids[i]);
-		if (i < midAsteroidsAmount && midAsteroids[i].active)
-		{
-			asteroid::drawAsteroidCollider(midAsteroids[i]);
-		}
-		if (i < bigAsteroidsAmount && bigAsteroids[i].active)
-		{
-			asteroid::drawAsteroidCollider(bigAsteroids[i]);
-		}
-		if (colitionCirCir(spaceShip.collider, smallAsteroids[i].collider) || 
-			colitionCirCir(spaceShip.collider, midAsteroids[i].collider) || 
-			colitionCirCir(spaceShip.collider, bigAsteroids[i].collider))
+		aster::drawAsteroidCollider(*it);
+		if (colitionCirCir(spaceShip.collider, it->collider)) 
 		{
 			DrawText("TRUE", 0, 0, 40, RED);
 		}
@@ -143,29 +123,33 @@ void scenes::unloadGamePlayTextures()
 	UnloadTexture(spaceShip.textureInfo.texture);
 	UnloadTexture(spaceShip.textureInfo.alternativeTexture);
 	UnloadTexture(space);
-	for (int i = 0; i < smallAsteroidsAmount; i++)
+	for (auto it = asteroids.begin(); it != asteroids.end(); ++it)
 	{
-		asteroid::unloadAsteroidsTexture(smallAsteroids[i]);
-		if (i < midAsteroidsAmount)
-		{
-			asteroid::unloadAsteroidsTexture(midAsteroids[i]);
-		}
-		if (i < bigAsteroidsAmount)
-		{
-			asteroid::unloadAsteroidsTexture(bigAsteroids[i]);
-		}
+		aster::unloadAsteroidsTexture(*it);
 	}
 }
 
 static bool colitionCirCir(tools::Circle circle1, tools::Circle circle2)
 {
 	float distance = static_cast<float>(sqrt(pow(circle1.pos.x - circle2.pos.x, 2) + pow(circle1.pos.y - circle2.pos.y, 2)));
-	if (distance <= circle1.radius + circle2.radius)
-	{
-		return true;
-	}
-	return false;
+
+	return distance <= circle1.radius + circle2.radius;
 }
+
+/*/static void splitAsteroid(asteroid::asteroid& asteroid, asteroid::asteroid smallerAsteroids[], int smallerCount)
+{
+	int count = 0;
+	for (int i = 0; i < smallerCount && count < 2; i++)
+	{
+		if (!smallerAsteroids[i].active)
+		{
+			count++;
+			asteroid::restartAsteroid(smallerAsteroids[i]);
+			smallerAsteroids[i].collider.pos.x = asteroid.collider.pos.x;
+			smallerAsteroids[i].collider.pos.y = asteroid.collider.pos.y;
+		}
+	}
+}*/
 
 
 static void bulletColition(bullet::bullet bulletss[])
@@ -174,89 +158,34 @@ static void bulletColition(bullet::bullet bulletss[])
 	{
 		if (bulletss[i].active)
 		{
-			for (int j = 0; j < smallAsteroidsAmount; j++)
+			for (auto it = asteroids.begin(); it != asteroids.end(); it++)
 			{
-				if (colitionCirCir(bulletss[i].collider, smallAsteroids[j].collider))
+				if (colitionCirCir(bulletss[i].collider, it->collider))
 				{
-					asteroid::destroyAsteroid(smallAsteroids[j]);
 					bulletss[i].collider.pos.x = -1;
 					bulletss[i].collider.pos.y = -1;
 					bulletss[i].dir = { 0,0 };
 					bulletss[i].active = false;
+					it = asteroids.erase(it);
+					break;
 				}
 			}
-		}
+		}	
 	}
-	for (int i = 0; i < maxAmmo; i++)
-	{
-		if (bulletss[i].active)
-		{
-			for (int j = 0; j < midAsteroidsAmount; j++)
-			{
-				if (colitionCirCir(bulletss[i].collider, midAsteroids[j].collider))
-				{
-					asteroid::destroyAsteroid(midAsteroids[j]);
-					bulletss[i].collider.pos.x = -1;
-					bulletss[i].collider.pos.y = -1;
-					bulletss[i].dir = { 0,0 };
-					bulletss[i].active = false;
-				}
-			}
-		}
-	}
-	for (int i = 0; i < maxAmmo; i++)
-	{
-		if (bulletss[i].active)
-		{
-			for (int j = 0; j < bigAsteroidsAmount; j++)
-			{
-				if (colitionCirCir(bulletss[i].collider, bigAsteroids[j].collider))
-				{
-					asteroid::destroyAsteroid(bigAsteroids[j]);
-					bulletss[i].collider.pos.x = -1;
-					bulletss[i].collider.pos.y = -1;
-					bulletss[i].dir = { 0,0 };
-					bulletss[i].active = false;
-				}
-			}
-		}
-	}
+	
 }
 
 static bool collitionPlayerAsteroid()
 {
 	bool colided = false;
 
-	for (int i = 0; i < smallAsteroidsAmount; i++)
+	for (auto it = asteroids.begin(); it != asteroids.end(); ++it)
 	{
-		if (smallAsteroids[i].active)
-		{
-			colided = colitionCirCir(spaceShip.collider, smallAsteroids[i].collider);
+			colided = colitionCirCir(spaceShip.collider, it->collider);
 			if (colided)
 			{
 				return true;
 			}
-		}
-	}
-
-	for (int i = 0; i < midAsteroidsAmount; i++)
-	{
-		if (midAsteroids[i].active)
-		{
-			colided = colitionCirCir(spaceShip.collider, midAsteroids[i].collider);
-			if (colided)
-			{
-				return true;
-			}
-		}
-	}
-	for (int i = 0; i < bigAsteroidsAmount; i++)
-	{
-		colided = colitionCirCir(spaceShip.collider, bigAsteroids[i].collider);
-		if (colided)
-		{
-			return true;
-		}
 	}
 	return false;
 }
@@ -265,22 +194,23 @@ static void inItAllAsteroids()
 {
 	float speed = 75.0f;
 	float radius = 15.0f;
-	for (int i = 0; i < smallAsteroidsAmount; i++)
+	int asteroidsToCreate = 15;
+	for (int i = 0; i < asteroidsToCreate; i++)
 	{	
-			asteroid::inItAsteroid(smallAsteroids[i], speed, radius);	
-			if (i % 2 == 0)
-			{
-				asteroid::destroyAsteroid(smallAsteroids[i]);
-			}
+	
+		asteroids.push_back(aster::inItAsteroid(speed, radius));
+			
+
 	}
-	speed = 30.0f;
+	/*speed = 30.0f;
 	radius = 25.0f;
 
 	for (int i = 0; i < midAsteroidsAmount; i++)
 	{
-		asteroid::inItAsteroid(midAsteroids[i], speed, radius);
-		if (i % 2 == 0)
+		
+		if (i < 4)
 		{
+			asteroid::inItAsteroid(midAsteroids[i], speed, radius);
 			asteroid::destroyAsteroid(midAsteroids[i]);
 		}
 	}
@@ -290,50 +220,31 @@ static void inItAllAsteroids()
 	for (int i = 0; i < bigAsteroidsAmount; i++)
 	{
 		asteroid::inItAsteroid(bigAsteroids[i], speed, radius);
+		asteroid::destroyAsteroid(bigAsteroids[i]);
 	}
-
+	*/
 }
 
 static void moveAllAsteroids()
 {
-	for (int i = 0; i < smallAsteroidsAmount; i++)
+	for (auto it = asteroids.begin(); it != asteroids.end(); ++it)
 	{
-		if (smallAsteroids[i].active)
-		{
-			asteroid::moveAsteroid(smallAsteroids[i]);
-		}
-		if ( i < midAsteroidsAmount && midAsteroids[i].active)
-		{
-			asteroid::moveAsteroid(midAsteroids[i]);
-		}
-		if (i < bigAsteroidsAmount && bigAsteroids[i].active)
-		{
-			asteroid::moveAsteroid(bigAsteroids[i]);
-		}
+		aster::moveAsteroid(*it);
 	}
 }
+
+
 
 
 static void drawAllAsteroids()
 {
-	for (int i = 0; i < smallAsteroidsAmount; i++)
+	for (auto it = asteroids.begin(); it != asteroids.end(); ++it)
 	{
-		if (smallAsteroids[i].active)
-		{
-			asteroid::drawAsteroid(smallAsteroids[i]);
-		}
-		if (i < midAsteroidsAmount && midAsteroids[i].active)
-		{
-			asteroid::drawAsteroid(midAsteroids[i]);
-		}
-		if (i < bigAsteroidsAmount && bigAsteroids[i].active)
-		{
-			asteroid::drawAsteroid(bigAsteroids[i]);
-		}
+		aster::drawAsteroid(*it);
 	}
 }
 
-static void restartAllasteroids()
+/*/static void restartAllasteroids()
 {
 	for (int i = 0; i < smallAsteroidsAmount; i++)
 	{
@@ -348,9 +259,9 @@ static void restartAllasteroids()
 			asteroid::restartAsteroid(bigAsteroids[i]);
 		}
 	}
-}
+}*/
 
-static bool checkAsteroidActive()
+/*/static bool checkAsteroidActive()
 {
 	for (int i = 0; i < smallAsteroidsAmount; i++)
 	{
@@ -374,9 +285,9 @@ static bool checkAsteroidActive()
 		}
 	}
 	return false;
-}
+}*/
 
-static void increasAllAsteroidsSpeed()
+/*/static void increasAllAsteroidsSpeed()
 {
 	float smallMaxSpeed = 100.0f;
 	float midMaxSpeed = 50.0f;
@@ -396,4 +307,4 @@ static void increasAllAsteroidsSpeed()
 			asteroid::increasSpeed(midAsteroids[i]);
 		}
 	}
-}
+}*/

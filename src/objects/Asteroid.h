@@ -4,8 +4,15 @@
 #include "tools/Circle.h"
 #include "tools/texture_info.h"
 
-namespace asteroid
+namespace aster
 {
+
+	enum size
+	{
+		small,
+		medium,
+		big
+	};
 
 struct asteroid
 {
@@ -16,21 +23,22 @@ struct asteroid
 	tools::textureInfo textureInfo;
 	float angle;
 	bool active;
+	size size;
 };
 
-void inItAsteroid(asteroid& asteroids, float speed, float radius);
+asteroid inItAsteroid(float speed, float radius);
 
-void drawAsteroidCollider(asteroid asteroids);
+void drawAsteroidCollider(asteroid& asteroids);
 
 void destroyAsteroid(asteroid& asteroid);
 
 void moveAsteroid(asteroid& asteroids);
 
-void drawAsteroid(asteroid asteroids);
+void drawAsteroid(asteroid& asteroids);
 
 void unloadAsteroidsTexture(asteroid& asteroids);
 
-void restartAsteroid(asteroid& asteroids);
+void restartAsteroid(asteroid &asteroids);
 
 void increasSpeed(asteroid& asteroid);
 }
