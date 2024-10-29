@@ -18,8 +18,8 @@ struct bullet
 
 void bulletsMovment(bullet bullets[], int maxAmmo);
 void distroyBullets(bullet bullets[], int maxAmmo);
-void drawBulletsColider(bullet bullets[], int maxAmmo);
 void drawBullet(bullet bullets[], int maxAmmo);
+void drawBulletsColider(bullet bullets[], int maxAmmo);
 void inItBullets(bullet bullets[], int maxAmmo);
 void unloadBulletsTextures(bullet bullets[], int maxAmmo);
 }

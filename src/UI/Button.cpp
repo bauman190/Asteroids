@@ -4,22 +4,14 @@
 
 static Sound buttonSound;
 
+static bool onButton(UI::Button button);
+
 bool UI::clickButton(Button button)
 {
 
 	if (CheckCollisionPointRec(GetMousePosition(), button.button) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 	{
 		PlaySound(buttonSound);
-		return true;
-	}
-	return false;
-}
-
- static bool onButton(UI::Button button)
-{
-
-	if (CheckCollisionPointRec(GetMousePosition(), button.button))
-	{
 		return true;
 	}
 	return false;
@@ -57,4 +49,14 @@ void UI::unloadButtonTextures(Button& button)
 {
 	UnloadTexture(button.off);
 	UnloadTexture(button.on);
+}
+
+static bool onButton(UI::Button button)
+{
+
+	if (CheckCollisionPointRec(GetMousePosition(), button.button))
+	{
+		return true;
+	}
+	return false;
 }

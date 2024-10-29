@@ -29,6 +29,14 @@ static bullet::bullet bullets[maxAmmo];
 
 static float timer = 0.0f;
 
+static Music music;
+
+static Sound soundArray[4];
+
+static void clearAsteroids();
+
+static void drawDEBUG();
+
 static bool colitionCirCir(tools::Circle circle1, tools::Circle circle2);
 
 static void bulletColition(bullet::bullet bulletss[]);
@@ -40,15 +48,6 @@ static void inItAllAsteroids();
 static void moveAllAsteroids();
 
 static void drawAllAsteroids();
-
-static Music music;
-
-static Sound soundArray[4];
-
-static void clearAsteroids()
-{
-	asteroids.clear();
-}
 
 void scenes::inItGamePlay()
 {
@@ -146,21 +145,6 @@ void scenes::updateGamePlay()
 	}
 }
 
-#ifdef _DEBUG
-void drawDEBUG()
-{
-	DrawCircle(static_cast<int>(spaceShip.collider.pos.x), static_cast<int>(spaceShip.collider.pos.y), spaceShip.collider.radius, WHITE);
-	for (auto it = asteroids.begin(); it != asteroids.end(); ++it)
-	{
-		aster::drawAsteroidCollider(*it);
-		if (colitionCirCir(spaceShip.collider, it->collider)) 
-		{
-			DrawText("TRUE", 0, 0, 40, RED);
-		}
-	}
-}
-#endif // _DEBUG
-
 void scenes::drawGamePlay()
 {
 	switch (inGameStatus)
@@ -208,6 +192,26 @@ void scenes::unloadGamePlay()
 	scenes::unloadPause();
 	scenes::unloadGameOver();
 }
+
+static void clearAsteroids()
+{
+	asteroids.clear();
+}
+
+#ifdef _DEBUG
+static void drawDEBUG()
+{
+	DrawCircle(static_cast<int>(spaceShip.collider.pos.x), static_cast<int>(spaceShip.collider.pos.y), spaceShip.collider.radius, WHITE);
+	for (auto it = asteroids.begin(); it != asteroids.end(); ++it)
+	{
+		aster::drawAsteroidCollider(*it);
+		if (colitionCirCir(spaceShip.collider, it->collider))
+		{
+			DrawText("TRUE", 0, 0, 40, RED);
+		}
+	}
+}
+#endif // _DEBUG
 
 static bool colitionCirCir(tools::Circle circle1, tools::Circle circle2)
 {

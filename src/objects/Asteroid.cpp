@@ -4,11 +4,6 @@
 
 #include "raylib.h"
 
-aster::size aster::randomSize()
-{
-	return static_cast<aster::size>(GetRandomValue(0, 2));
-}
-
 aster::asteroid aster::inItAsteroid(size size)
 {
 	aster::asteroid asteroid;
@@ -135,6 +130,11 @@ void aster::drawAsteroid(asteroid& asteroids)
 void aster::unloadAsteroidsTexture(asteroid& asteroids)
 {
 		UnloadTexture(asteroids.textureInfo.texture);	
+}
+
+aster::size aster::randomSize()
+{
+	return static_cast<aster::size>(GetRandomValue(0, 2));
 }
 
 
