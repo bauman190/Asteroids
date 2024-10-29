@@ -38,6 +38,8 @@ static void moveAllAsteroids();
 
 static void drawAllAsteroids();
 
+static Music music;
+
 static void clearAsteroids()
 {
 	asteroids.clear();
@@ -51,6 +53,9 @@ void scenes::inItGamePlay()
 	inItAllAsteroids();
 	bullet::inItBullets(bullets, maxAmmo);
 	space = LoadTexture("res/space.png");
+	music = LoadMusicStream("res/Asteroids Gameplay.wav");
+	music.looping = true;
+	PlayMusicStream(music);
 }
 
 void scenes::checkImputGamePlay()
@@ -78,6 +83,7 @@ void scenes::updateGamePlay()
 	switch (inGameStatus)
 	{
 	case scenes::Game:
+		UpdateMusicStream(music);
 		bulletColition(bullets);
 		player::screenLimits(spaceShip);
 		player::spaceShipRotation(spaceShip);
@@ -166,6 +172,7 @@ void scenes::unloadGamePlayTextures()
 	{
 		aster::unloadAsteroidsTexture(*it);
 	}
+	UnloadMusicStream(music);
 }
 
 static bool colitionCirCir(tools::Circle circle1, tools::Circle circle2)
