@@ -17,6 +17,8 @@ static std::list<aster::asteroid> asteroids;
 
 static const int maxAmmo = 10;
 
+static int maxAsteroidsOnScreen = 25;
+
 static bullet::bullet bullets[maxAmmo];
 
 static float timer = 0.0f;
@@ -83,11 +85,11 @@ void scenes::updateGamePlay()
 		timer = 0;
 	}
 
-	/*/if (!checkAsteroidActive())
+	if (asteroids.empty())
 	{
-		//restartAllasteroids();
-		increasAllAsteroidsSpeed();
-	}*/
+		inItAllAsteroids();
+		maxAsteroidsOnScreen += 3;
+	}
 }
 
 #ifdef _DEBUG
@@ -136,20 +138,30 @@ static bool colitionCirCir(tools::Circle circle1, tools::Circle circle2)
 	return distance <= circle1.radius + circle2.radius;
 }
 
-/*/static void splitAsteroid(asteroid::asteroid& asteroid, asteroid::asteroid smallerAsteroids[], int smallerCount)
+static void splitAsteroid(aster::asteroid& asteroid)
 {
-	int count = 0;
-	for (int i = 0; i < smallerCount && count < 2; i++)
+	if (asteroid.size == aster::big)
 	{
-		if (!smallerAsteroids[i].active)
-		{
-			count++;
-			asteroid::restartAsteroid(smallerAsteroids[i]);
-			smallerAsteroids[i].collider.pos.x = asteroid.collider.pos.x;
-			smallerAsteroids[i].collider.pos.y = asteroid.collider.pos.y;
-		}
+		asteroids.push_back(aster::inItAsteroid(aster::medium));
+		asteroids.push_back(aster::inItAsteroid(aster::medium));
 	}
-}*/
+	else if (asteroid.size == aster::medium)
+	{
+		asteroids.push_back(aster::inItAsteroid(aster::small));
+		asteroids.push_back(aster::inItAsteroid(aster::small));
+	}
+	else
+	{
+		return;
+	}
+	std::list<aster::asteroid>::iterator it = asteroids.end();
+	it--;
+	it->collider.pos.x = asteroid.collider.pos.x;
+	it->collider.pos.y = asteroid.collider.pos.y;
+	it--;
+	it->collider.pos.x = asteroid.collider.pos.x;
+	it->collider.pos.y = asteroid.collider.pos.y;
+}
 
 
 static void bulletColition(bullet::bullet bulletss[])
@@ -166,6 +178,7 @@ static void bulletColition(bullet::bullet bulletss[])
 					bulletss[i].collider.pos.y = -1;
 					bulletss[i].dir = { 0,0 };
 					bulletss[i].active = false;
+					splitAsteroid(*it);
 					it = asteroids.erase(it);
 					break;
 				}
@@ -192,37 +205,13 @@ static bool collitionPlayerAsteroid()
 
 static void inItAllAsteroids()
 {
-	float speed = 75.0f;
-	float radius = 15.0f;
-	int asteroidsToCreate = 15;
+	int asteroidsToCreate = maxAsteroidsOnScreen;
+	aster::size size;
 	for (int i = 0; i < asteroidsToCreate; i++)
-	{	
-	
-		asteroids.push_back(aster::inItAsteroid(speed, radius));
-			
-
+	{		
+		size = aster::randomSize();
+		asteroids.push_back(aster::inItAsteroid(size));	
 	}
-	/*speed = 30.0f;
-	radius = 25.0f;
-
-	for (int i = 0; i < midAsteroidsAmount; i++)
-	{
-		
-		if (i < 4)
-		{
-			asteroid::inItAsteroid(midAsteroids[i], speed, radius);
-			asteroid::destroyAsteroid(midAsteroids[i]);
-		}
-	}
-
-	speed = 20.0f;
-	radius = 35.0f;
-	for (int i = 0; i < bigAsteroidsAmount; i++)
-	{
-		asteroid::inItAsteroid(bigAsteroids[i], speed, radius);
-		asteroid::destroyAsteroid(bigAsteroids[i]);
-	}
-	*/
 }
 
 static void moveAllAsteroids()
@@ -233,9 +222,6 @@ static void moveAllAsteroids()
 	}
 }
 
-
-
-
 static void drawAllAsteroids()
 {
 	for (auto it = asteroids.begin(); it != asteroids.end(); ++it)
@@ -243,68 +229,3 @@ static void drawAllAsteroids()
 		aster::drawAsteroid(*it);
 	}
 }
-
-/*/static void restartAllasteroids()
-{
-	for (int i = 0; i < smallAsteroidsAmount; i++)
-	{
-		asteroid::restartAsteroid(smallAsteroids[i]);
-
-		if (i < midAsteroidsAmount)
-		{
-			asteroid::restartAsteroid(midAsteroids[i]);
-		}
-		if (i < bigAsteroidsAmount)
-		{
-			asteroid::restartAsteroid(bigAsteroids[i]);
-		}
-	}
-}*/
-
-/*/static bool checkAsteroidActive()
-{
-	for (int i = 0; i < smallAsteroidsAmount; i++)
-	{
-		if (smallAsteroids[i].active)
-		{
-			return true;
-		}
-		if (i < midAsteroidsAmount)
-		{
-			if (midAsteroids[i].active)
-			{
-				return true;
-			}
-		}
-		if (i < bigAsteroidsAmount)
-		{
-			if (bigAsteroids[i].active)
-			{
-				return true;
-			}
-		}
-	}
-	return false;
-}*/
-
-/*/static void increasAllAsteroidsSpeed()
-{
-	float smallMaxSpeed = 100.0f;
-	float midMaxSpeed = 50.0f;
-	float bigMaxSpeed = 30.0f;
-	for (int i = 0; i < smallAsteroidsAmount; i++)
-	{
-		if (smallAsteroids[i].initialSpeed < smallMaxSpeed)
-		{
-			asteroid::increasSpeed(smallAsteroids[i]);
-		}
-		if (i < midAsteroidsAmount && midAsteroids[i].initialSpeed < midMaxSpeed)
-		{
-			asteroid::increasSpeed(midAsteroids[i]);
-		}
-		if ((i < bigAsteroidsAmount && bigAsteroids[i].initialSpeed < bigMaxSpeed))
-		{
-			asteroid::increasSpeed(midAsteroids[i]);
-		}
-	}
-}*/

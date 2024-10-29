@@ -26,11 +26,9 @@ struct asteroid
 	size size;
 };
 
-asteroid inItAsteroid(float speed, float radius);
+asteroid inItAsteroid(size size);
 
 void drawAsteroidCollider(asteroid& asteroids);
-
-void destroyAsteroid(asteroid& asteroid);
 
 void moveAsteroid(asteroid& asteroids);
 
@@ -38,7 +36,6 @@ void drawAsteroid(asteroid& asteroids);
 
 void unloadAsteroidsTexture(asteroid& asteroids);
 
-void restartAsteroid(asteroid &asteroids);
+size randomSize();
 
-void increasSpeed(asteroid& asteroid);
 }
