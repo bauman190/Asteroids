@@ -7,6 +7,7 @@
 #include "scene/MainMenu.h"
 #include "scene/Gameplay.h"
 #include "scene/credits.h"
+#include "scene/how_to_play.h"
 
 
 
@@ -56,6 +57,7 @@ static void inIt()
 	scenes::inItMainMenu();
 	scenes::inItGamePlay();
 	scenes::inItCredits();
+	scenes::inItHowTo();
 }
 
 static void checkImput()
@@ -70,6 +72,9 @@ static void checkImput()
 		break;
 	case scenes::Credits:
 		scenes::checkInputCredits();
+		break;
+	case scenes::HowToPlay:
+		scenes::inputHowTo();
 		break;
 	default:
 		break;
@@ -88,6 +93,8 @@ static void update()
 		scenes::updateGamePlay();
 		break;
 	case scenes::Credits:
+		break;
+	case scenes::HowToPlay:
 		break;
 	default:
 		break;
@@ -110,6 +117,9 @@ static void draw()
 		break;
 	case scenes::Credits:
 		scenes::drawCredits();
+		break;
+	case scenes::HowToPlay:
+		scenes::drawHowTo();
 		break;
 	default:
 		break;

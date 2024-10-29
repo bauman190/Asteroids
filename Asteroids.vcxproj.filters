@@ -43,6 +43,9 @@
     <Filter Include="scenes\game_over">
       <UniqueIdentifier>{8526a0ce-3b5c-4e84-911e-175bd77194cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="scenes\how_to_play">
+      <UniqueIdentifier>{788fb52e-7154-43cc-a323-21834797b5be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -75,6 +78,9 @@
     </ClCompile>
     <ClCompile Include="src\scene\game_over.cpp">
       <Filter>scenes\game_over</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\how_to_play.cpp">
+      <Filter>scenes\how_to_play</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="src\scene\game_over.h">
       <Filter>scenes\game_over</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\how_to_play.h">
+      <Filter>scenes\how_to_play</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

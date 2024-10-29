@@ -4,6 +4,7 @@
 
 #include "UI/Button.h"
 #include "scene/ScreenOptions.h"
+#include "how_to_play.h"
 
 extern scenes::Screen currentScreen;
 
@@ -12,6 +13,8 @@ extern Texture backGround;
 static UI::Button play;
 
 static UI::Button credits;
+
+static UI::Button controls;
 
 static UI::Button exit;
 
@@ -33,6 +36,12 @@ void scenes::checkImputMainMenu()
 		PlayMusicStream(music);
 		currentScreen = Credits;
 	}
+	if (UI::clickButton(controls))
+	{
+		StopMusicStream(music);
+		PlayMusicStream(music);
+		currentScreen = HowToPlay;
+	}
 	if (UI::clickButton(exit))	
 	{
 		exitGame = true;
@@ -46,6 +55,7 @@ void scenes::drawMainMenu()
 	
 	UI::drawButton(play);
 	UI::drawButton(credits);
+	UI::drawButton(controls);
 	UI::drawButton(exit);
 
 }
@@ -64,6 +74,11 @@ void scenes::inItMainMenu()
 		LoadTexture("res/Credits_on.png"), 
 		LoadTexture("res/Credits_off.png"));
 
+	UI::inItButton(controls, midScreenX,
+		credits.button.y + credits.button.height * 2,
+		LoadTexture("res/Controls_on.png"),
+		LoadTexture("res/Controls_off.png"));
+
 	UI::inItButton(exit, 100, GetScreenHeight() - 50.0f, LoadTexture("res/Exit_on.png"), LoadTexture("res/Exit_off.png"));
 
 	music = LoadMusicStream("res/Asteroids_menu.wav");
@@ -79,6 +94,7 @@ void scenes::unloadMianMenuTextures()
 	UI::unloadButtonTextures(play);
 	UI::unloadButtonTextures(exit);
 	UI::unloadButtonTextures(credits);
+	UI::unloadButtonTextures(controls);
 	UnloadMusicStream(music);
 	UnloadTexture(backGround);
 }
