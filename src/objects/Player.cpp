@@ -1,10 +1,10 @@
-#include "objects/Player.h"
+#include "objects/player.h"
 
 #include <cmath>
 
 #include "raylib.h"
 
-#include "Bullet.h"
+#include "bullet.h"
 
 static Sound bulletSound;
 

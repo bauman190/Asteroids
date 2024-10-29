@@ -1,8 +1,8 @@
 #pragma once
 #include "raylib.h"
 
-#include "objects/Bullet.h"
-#include "tools/Circle.h"
+#include "objects/bullet.h"
+#include "tools/circle.h"
 #include "tools/texture_info.h"
 
 

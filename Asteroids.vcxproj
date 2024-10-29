@@ -19,34 +19,34 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\game\Game.cpp" />
+    <ClCompile Include="src\game\game.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\objects\Asteroid.cpp" />
-    <ClCompile Include="src\objects\Bullet.cpp" />
-    <ClCompile Include="src\objects\Player.cpp" />
+    <ClCompile Include="src\objects\asteroid.cpp" />
+    <ClCompile Include="src\objects\bullet.cpp" />
+    <ClCompile Include="src\objects\player.cpp" />
     <ClCompile Include="src\scene\credits.cpp" />
-    <ClCompile Include="src\scene\Gameplay.cpp" />
+    <ClCompile Include="src\scene\gameplay.cpp" />
     <ClCompile Include="src\scene\game_over.cpp" />
     <ClCompile Include="src\scene\how_to_play.cpp" />
-    <ClCompile Include="src\scene\MainMenu.cpp" />
+    <ClCompile Include="src\scene\main_menu.cpp" />
     <ClCompile Include="src\scene\pause.cpp" />
-    <ClCompile Include="src\UI\Button.cpp" />
+    <ClCompile Include="src\UI\button.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\game\Game.h" />
-    <ClInclude Include="src\objects\Asteroid.h" />
-    <ClInclude Include="src\objects\Bullet.h" />
-    <ClInclude Include="src\objects\Player.h" />
+    <ClInclude Include="src\game\game.h" />
+    <ClInclude Include="src\objects\asteroid.h" />
+    <ClInclude Include="src\objects\bullet.h" />
+    <ClInclude Include="src\objects\player.h" />
     <ClInclude Include="src\scene\credits.h" />
-    <ClInclude Include="src\scene\Gameplay.h" />
+    <ClInclude Include="src\scene\gameplay.h" />
     <ClInclude Include="src\scene\game_over.h" />
     <ClInclude Include="src\scene\how_to_play.h" />
-    <ClInclude Include="src\scene\MainMenu.h" />
+    <ClInclude Include="src\scene\main_menu.h" />
     <ClInclude Include="src\scene\pause.h" />
-    <ClInclude Include="src\scene\ScreenOptions.h" />
-    <ClInclude Include="src\tools\Circle.h" />
+    <ClInclude Include="src\scene\screen_options.h" />
+    <ClInclude Include="src\tools\circle.h" />
     <ClInclude Include="src\tools\texture_info.h" />
-    <ClInclude Include="src\UI\Button.h" />
+    <ClInclude Include="src\UI\button.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

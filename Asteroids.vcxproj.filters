@@ -49,25 +49,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\game\Game.cpp">
+    <ClCompile Include="src\game\game.cpp">
       <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="src\scene\Gameplay.cpp">
+    <ClCompile Include="src\scene\gameplay.cpp">
       <Filter>scenes\gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="src\scene\MainMenu.cpp">
+    <ClCompile Include="src\scene\main_menu.cpp">
       <Filter>scenes\main_menu</Filter>
     </ClCompile>
-    <ClCompile Include="src\objects\Asteroid.cpp">
+    <ClCompile Include="src\objects\asteroid.cpp">
       <Filter>objects\asteroid</Filter>
     </ClCompile>
-    <ClCompile Include="src\objects\Bullet.cpp">
+    <ClCompile Include="src\objects\bullet.cpp">
       <Filter>objects\bullet</Filter>
     </ClCompile>
-    <ClCompile Include="src\objects\Player.cpp">
+    <ClCompile Include="src\objects\player.cpp">
       <Filter>objects\player</Filter>
     </ClCompile>
-    <ClCompile Include="src\UI\Button.cpp">
+    <ClCompile Include="src\UI\button.cpp">
       <Filter>UI\button</Filter>
     </ClCompile>
     <ClCompile Include="src\scene\credits.cpp">
@@ -84,34 +84,34 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\scene\ScreenOptions.h">
+    <ClInclude Include="src\scene\screen_options.h">
       <Filter>scenes</Filter>
     </ClInclude>
-    <ClInclude Include="src\tools\Circle.h">
+    <ClInclude Include="src\tools\circle.h">
       <Filter>tools</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\Game.h">
+    <ClInclude Include="src\game\game.h">
       <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="src\scene\Gameplay.h">
+    <ClInclude Include="src\scene\gameplay.h">
       <Filter>scenes\gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="src\scene\MainMenu.h">
+    <ClInclude Include="src\scene\main_menu.h">
       <Filter>scenes\main_menu</Filter>
     </ClInclude>
-    <ClInclude Include="src\objects\Asteroid.h">
+    <ClInclude Include="src\objects\asteroid.h">
       <Filter>objects\asteroid</Filter>
     </ClInclude>
-    <ClInclude Include="src\objects\Bullet.h">
+    <ClInclude Include="src\objects\bullet.h">
       <Filter>objects\bullet</Filter>
     </ClInclude>
-    <ClInclude Include="src\objects\Player.h">
+    <ClInclude Include="src\objects\player.h">
       <Filter>objects\player</Filter>
     </ClInclude>
     <ClInclude Include="src\tools\texture_info.h">
       <Filter>tools</Filter>
     </ClInclude>
-    <ClInclude Include="src\UI\Button.h">
+    <ClInclude Include="src\UI\button.h">
       <Filter>UI\button</Filter>
     </ClInclude>
     <ClInclude Include="src\scene\credits.h">

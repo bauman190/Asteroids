@@ -1,10 +1,10 @@
-#include "Game.h"
+#include "game.h"
 
 #include "raylib.h"
 
-#include "scene/ScreenOptions.h"
-#include "scene/MainMenu.h"
-#include "scene/Gameplay.h"
+#include "scene/screen_options.h"
+#include "scene/main_menu.h"
+#include "scene/gameplay.h"
 #include "scene/credits.h"
 #include "scene/how_to_play.h"
 

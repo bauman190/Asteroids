@@ -2,9 +2,9 @@
 
 #include "raylib.h"
 
-#include "UI/Button.h"
-#include "ScreenOptions.h"
-#include "Gameplay.h"
+#include "UI/button.h"
+#include "screen_options.h"
+#include "gameplay.h"
 
 extern scenes::inGameScene inGameStatus;
 extern scenes::Screen currentScreen;

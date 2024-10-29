@@ -1,7 +1,7 @@
 #pragma once
 #include "raylib.h"
 
-#include "tools/Circle.h"
+#include "tools/circle.h"
 #include "tools/texture_info.h"
 
 namespace aster

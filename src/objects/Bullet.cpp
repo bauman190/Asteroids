@@ -1,4 +1,4 @@
-#include "objects/Bullet.h"
+#include "objects/bullet.h"
 
 #include <cmath>
 

@@ -1,9 +1,9 @@
-#include "MainMenu.h"
+#include "main_menu.h"
 
 #include "raylib.h"
 
-#include "UI/Button.h"
-#include "scene/ScreenOptions.h"
+#include "UI/button.h"
+#include "scene/screen_options.h"
 #include "how_to_play.h"
 
 extern scenes::Screen currentScreen;

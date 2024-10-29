@@ -1,4 +1,4 @@
-#include "objects/Asteroid.h"
+#include "objects/asteroid.h"
 
 #include <cmath>
 

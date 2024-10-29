@@ -5,13 +5,13 @@
 
 #include "raylib.h"
 
-#include "objects/Player.h"
-#include "objects/Asteroid.h"
-#include "objects/Bullet.h"
-#include "tools/Circle.h"
+#include "objects/player.h"
+#include "objects/asteroid.h"
+#include "objects/bullet.h"
+#include "tools/circle.h"
 #include "pause.h"
 #include "game_over.h"
-#include "ScreenOptions.h"
+#include "screen_options.h"
 
 scenes::inGameScene inGameStatus = scenes::Game;
 
