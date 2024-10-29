@@ -16,6 +16,7 @@ struct player
 	Vector2 speed;
 	tools::textureInfo textureInfo;
 	bool immune; 
+	int score;
 };
 
 

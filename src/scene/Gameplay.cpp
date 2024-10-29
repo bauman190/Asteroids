@@ -134,7 +134,6 @@ void drawDEBUG()
 			DrawText("TRUE", 0, 0, 40, RED);
 		}
 	}
-	DrawText(TextFormat("Lives: %02i", spaceShip.lives), 20, 20, 40, BLUE);
 }
 #endif // _DEBUG
 
@@ -147,6 +146,8 @@ void scenes::drawGamePlay()
 		player::drawSpaceShipTexture(spaceShip);
 		bullet::drawBullet(bullets, maxAmmo);
 		drawAllAsteroids();
+		DrawText(TextFormat("Score: %01i", spaceShip.score),120, 20, 20, RED);
+		DrawText(TextFormat("Lives: %02i", spaceShip.lives), 20, 20, 20, BLUE);
 #ifdef _DEBUG
 		drawDEBUG();
 #endif // _DEBUG
@@ -224,6 +225,7 @@ static void bulletColition(bullet::bullet bulletss[])
 					bulletss[i].active = false;
 					splitAsteroid(*it);
 					it = asteroids.erase(it);
+					spaceShip.score++;
 					break;
 				}
 			}

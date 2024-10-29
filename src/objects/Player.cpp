@@ -88,6 +88,7 @@ void  player::inItSpaceShip(player& SpaceShip)
 	SpaceShip.maxSpeed = 250.0f;
 	SpaceShip.immune = false;
 	SpaceShip.lives = 3;
+	SpaceShip.score = 0;
 }
 
 void  player::drawSpaceShipTexture(player SpaceShip)
