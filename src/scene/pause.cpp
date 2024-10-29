@@ -39,3 +39,9 @@ void scenes::inputPause()
 		currentScreen = MainMenu;
 	}
 }
+
+void scenes::unloadPause()
+{
+	UI::unloadButtonTextures(play);
+	UI::unloadButtonTextures(exit);
+}
