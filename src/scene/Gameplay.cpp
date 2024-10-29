@@ -40,6 +40,8 @@ static void drawAllAsteroids();
 
 static Music music;
 
+static Sound soundArray[4];
+
 static void clearAsteroids()
 {
 	asteroids.clear();
@@ -55,6 +57,10 @@ void scenes::inItGamePlay()
 	space = LoadTexture("res/space.png");
 	music = LoadMusicStream("res/Asteroids Gameplay.wav");
 	music.looping = true;
+	soundArray[0] = LoadSound("res/Explosion.wav");
+	soundArray[1] = LoadSound("res/Hit_Hurt.wav");
+	soundArray[2] = LoadSound("res/Shield.wav");
+		
 	PlayMusicStream(music);
 }
 
@@ -96,11 +102,16 @@ void scenes::updateGamePlay()
 			player::loseLife(spaceShip);
 			spaceShip.immune = true;
 			timer = 0.0f;
+			PlaySound(soundArray[1]);
 		}
 
 		if (spaceShip.immune)
 		{
 			timer += GetFrameTime();
+			if (timer >= 1.5)
+			{
+				PlaySound(soundArray[2]);
+			}
 		}
 
 		if (timer >= 2)
@@ -225,6 +236,7 @@ static void bulletColition(bullet::bullet bulletss[])
 					bulletss[i].active = false;
 					splitAsteroid(*it);
 					it = asteroids.erase(it);
+					PlaySound(soundArray[0]);
 					spaceShip.score++;
 					break;
 				}

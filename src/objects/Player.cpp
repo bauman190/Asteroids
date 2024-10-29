@@ -6,7 +6,7 @@
 
 #include "Bullet.h"
 
-
+static Sound bulletSound;
 
 static float convertToDegree(float angle)
 {
@@ -89,6 +89,7 @@ void  player::inItSpaceShip(player& SpaceShip)
 	SpaceShip.immune = false;
 	SpaceShip.lives = 3;
 	SpaceShip.score = 0;
+	bulletSound = LoadSound("res/Laser_Shoot.wav");
 }
 
 void  player::drawSpaceShipTexture(player SpaceShip)
@@ -134,6 +135,7 @@ void  player::shoot(bullet::bullet bullets[], player SpaceShip, int maxAmmo)
 					bullets[i].dir.x /= magnitud;
 					bullets[i].dir.y /= magnitud;
 					bullets[i].active = true;
+					PlaySound(bulletSound);
 				}
 				break;
 			}

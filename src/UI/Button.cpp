@@ -1,10 +1,15 @@
 #include "UI/Button.h"
 
+#include "raylib.h"
+
+static Sound buttonSound;
+
 bool UI::clickButton(Button button)
 {
 
 	if (CheckCollisionPointRec(GetMousePosition(), button.button) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 	{
+		PlaySound(buttonSound);
 		return true;
 	}
 	return false;
@@ -45,6 +50,7 @@ void UI::inItButton(Button& button, float x, float y, Texture on, Texture off)
 	button.off.height = static_cast<int>(button.button.height);
 	button.on.width = static_cast<int>(button.button.width);
 	button.on.height = static_cast<int>(button.button.height);
+	buttonSound = LoadSound("res/Button.wav");
 }
 
 void UI::unloadButtonTextures(Button& button)
