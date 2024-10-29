@@ -23,10 +23,14 @@ void scenes::checkImputMainMenu()
 {
 	if (UI::clickButton(play))
 	{
+		StopMusicStream(music);
+		PlayMusicStream(music);
 		currentScreen = Gameplay;
 	}
 	if (UI::clickButton(credits))
 	{
+		StopMusicStream(music);
+		PlayMusicStream(music);
 		currentScreen = Credits;
 	}
 	if (UI::clickButton(exit))	
