@@ -2,7 +2,6 @@
 
 #include "raylib.h"
 
-#include "objects/Player.h"
 #include "scene/ScreenOptions.h"
 #include "scene/MainMenu.h"
 #include "scene/Gameplay.h"

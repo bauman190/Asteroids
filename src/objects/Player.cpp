@@ -1,8 +1,8 @@
 #include "objects/Player.h"
 
-#include "raylib.h"
-
 #include <cmath>
+
+#include "raylib.h"
 
 #include "Bullet.h"
 

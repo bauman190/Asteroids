@@ -1,6 +1,4 @@
 #pragma once
-#include "raylib.h"
-
 
 namespace scenes
 { 

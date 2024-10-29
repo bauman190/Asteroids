@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace scenes
 {
 	void inItHowTo();

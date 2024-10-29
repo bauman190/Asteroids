@@ -1,8 +1,9 @@
 #include "Gameplay.h"
 
-#include "raylib.h"
 #include <cmath>
 #include <list>
+
+#include "raylib.h"
 
 #include "objects/Player.h"
 #include "objects/Asteroid.h"
@@ -10,6 +11,7 @@
 #include "tools/Circle.h"
 #include "pause.h"
 #include "game_over.h"
+#include "ScreenOptions.h"
 
 scenes::inGameScene inGameStatus = scenes::Game;
 

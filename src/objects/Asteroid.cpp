@@ -1,7 +1,8 @@
 #include "objects/Asteroid.h"
 
-#include "raylib.h"
 #include <cmath>
+
+#include "raylib.h"
 
 aster::size aster::randomSize()
 {
