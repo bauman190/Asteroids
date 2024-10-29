@@ -8,6 +8,9 @@
 #include "objects/Asteroid.h"
 #include "objects/Bullet.h"
 #include "tools/Circle.h"
+#include "pause.h"
+
+scenes::inGameScene inGameStatus = scenes::Game;
 
 static  player::player spaceShip;
 
@@ -35,17 +38,16 @@ static void moveAllAsteroids();
 
 static void drawAllAsteroids();
 
-//static void restartAllasteroids();
-
-//static bool checkAsteroidActive();
-
-//static void restartAllasteroids();
-
-//static void increasAllAsteroidsSpeed();
+static void clearAsteroids()
+{
+	asteroids.clear();
+}
 
 void scenes::inItGamePlay()
 {
 	player::inItSpaceShip(spaceShip);
+	inItPause();
+	clearAsteroids();
 	inItAllAsteroids();
 	bullet::inItBullets(bullets, maxAmmo);
 	space = LoadTexture("res/space.png");
@@ -53,42 +55,64 @@ void scenes::inItGamePlay()
 
 void scenes::checkImputGamePlay()
 {
-	player::spaceShipMovment(spaceShip);
-	player::shoot(bullets, spaceShip, maxAmmo);
-	
+	switch (inGameStatus)
+	{
+	case scenes::Game:
+		player::spaceShipMovment(spaceShip);
+		player::shoot(bullets, spaceShip, maxAmmo);
+		if (IsKeyPressed(KEY_P))
+		{
+			inGameStatus = Pause;
+		}
+		break;
+	case scenes::Pause:
+		scenes::inputPause();
+		break;
+	default:
+		break;
+	}
 }
 
 void scenes::updateGamePlay()
 {
-	bulletColition(bullets);
-	player::screenLimits(spaceShip);
-	player::spaceShipRotation(spaceShip);
-	bullet::bulletsMovment(bullets, maxAmmo);
-	bullet::distroyBullets(bullets, maxAmmo);
-	moveAllAsteroids();
-
-	if (!spaceShip.immune && collitionPlayerAsteroid())
+	switch (inGameStatus)
 	{
-		player::loseLife(spaceShip);
-		spaceShip.immune = true;
-		timer = 0.0f;
-	}
+	case scenes::Game:
+		bulletColition(bullets);
+		player::screenLimits(spaceShip);
+		player::spaceShipRotation(spaceShip);
+		bullet::bulletsMovment(bullets, maxAmmo);
+		bullet::distroyBullets(bullets, maxAmmo);
+		moveAllAsteroids();
 
-	if (spaceShip.immune)
-	{
-		timer += GetFrameTime();
-	}
+		if (!spaceShip.immune && collitionPlayerAsteroid())
+		{
+			player::loseLife(spaceShip);
+			spaceShip.immune = true;
+			timer = 0.0f;
+		}
 
-	if (timer >= 2)
-	{
-		spaceShip.immune = false;
-		timer = 0;
-	}
+		if (spaceShip.immune)
+		{
+			timer += GetFrameTime();
+		}
 
-	if (asteroids.empty())
-	{
-		inItAllAsteroids();
-		maxAsteroidsOnScreen += 3;
+		if (timer >= 2)
+		{
+			spaceShip.immune = false;
+			timer = 0;
+		}
+
+		if (asteroids.empty())
+		{
+			inItAllAsteroids();
+			maxAsteroidsOnScreen += 3;
+		}
+		break;
+	case scenes::Pause:
+		break;
+	default:
+		break;
 	}
 }
 
@@ -110,14 +134,27 @@ void drawDEBUG()
 
 void scenes::drawGamePlay()
 {
-	DrawTexture(space, 0, 0, WHITE);
-	player::drawSpaceShipTexture(spaceShip);
-	bullet::drawBullet(bullets, maxAmmo);
-	drawAllAsteroids();
-
+	switch (inGameStatus)
+	{
+	case scenes::Game:
+		DrawTexture(space, 0, 0, WHITE);
+		player::drawSpaceShipTexture(spaceShip);
+		bullet::drawBullet(bullets, maxAmmo);
+		drawAllAsteroids();
 #ifdef _DEBUG
-	drawDEBUG();
+		drawDEBUG();
 #endif // _DEBUG
+		break;
+	case scenes::Pause:
+		DrawTexture(space, 0, 0, WHITE);
+		player::drawSpaceShipTexture(spaceShip);
+		bullet::drawBullet(bullets, maxAmmo);
+		drawAllAsteroids();
+		scenes::drawPause();
+		break;
+	default:
+		break;
+	}
 }
 
 void scenes::unloadGamePlayTextures()
@@ -229,3 +266,5 @@ static void drawAllAsteroids()
 		aster::drawAsteroid(*it);
 	}
 }
+
+

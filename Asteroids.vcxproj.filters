@@ -37,6 +37,9 @@
     <Filter Include="scenes\credits">
       <UniqueIdentifier>{19facceb-47b1-4004-bf6f-6cd4d1574391}</UniqueIdentifier>
     </Filter>
+    <Filter Include="scenes\pause">
+      <UniqueIdentifier>{8b3ab03a-4592-4315-ab11-b605c497b989}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -63,6 +66,9 @@
     </ClCompile>
     <ClCompile Include="src\scene\credits.cpp">
       <Filter>scenes\credits</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\pause.cpp">
+      <Filter>scenes\pause</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="src\scene\credits.h">
       <Filter>scenes\credits</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\pause.h">
+      <Filter>scenes\pause</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
