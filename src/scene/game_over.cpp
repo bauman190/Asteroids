@@ -38,3 +38,9 @@ void scenes::inPutGameOver()
 		currentScreen = MainMenu;
 	}
 }
+
+void scenes::unloadGameOver()
+{
+	UI::unloadButtonTextures(play);
+	UI::unloadButtonTextures(exit);
+}

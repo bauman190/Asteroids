@@ -206,6 +206,7 @@ void scenes::unloadGamePlay()
 	}
 	UnloadMusicStream(music);
 	scenes::unloadPause();
+	scenes::unloadGameOver();
 }
 
 static bool colitionCirCir(tools::Circle circle1, tools::Circle circle2)
