@@ -189,7 +189,7 @@ void scenes::drawGamePlay()
 	}
 }
 
-void scenes::unloadGamePlayTextures()
+void scenes::unloadGamePlay()
 {
 	UnloadTexture(spaceShip.textureInfo.texture);
 	UnloadTexture(spaceShip.textureInfo.alternativeTexture);
@@ -197,6 +197,10 @@ void scenes::unloadGamePlayTextures()
 	for (auto it = asteroids.begin(); it != asteroids.end(); ++it)
 	{
 		aster::unloadAsteroidsTexture(*it);
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		UnloadSound(soundArray[i]);
 	}
 	UnloadMusicStream(music);
 }

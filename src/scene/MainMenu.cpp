@@ -89,7 +89,7 @@ void scenes::inItMainMenu()
 	backGround.width = GetScreenWidth();
 }
 
-void scenes::unloadMianMenuTextures()
+void scenes::unloadMianMenu()
 {
 	UI::unloadButtonTextures(play);
 	UI::unloadButtonTextures(exit);

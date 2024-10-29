@@ -49,3 +49,8 @@ void scenes::inputHowTo()
 	}
 }
 
+void scenes::unloadHowTo()
+{
+	UI::unloadButtonTextures(back);
+}
+

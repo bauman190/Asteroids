@@ -11,6 +11,6 @@ void updateGamePlay();
 
 void drawGamePlay();
 
-void unloadGamePlayTextures();
+void unloadGamePlay();
 
 }

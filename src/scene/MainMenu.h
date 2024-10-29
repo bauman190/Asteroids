@@ -10,7 +10,7 @@ void drawMainMenu();
 
 void inItMainMenu();
 
-void unloadMianMenuTextures();
+void unloadMianMenu();
 
 void updateMenu();
 }

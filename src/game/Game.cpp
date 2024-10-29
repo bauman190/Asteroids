@@ -130,9 +130,10 @@ static void draw()
 
 static void close()
 {
-	scenes::unloadGamePlayTextures();
-	scenes::unloadMianMenuTextures();
+	scenes::unloadGamePlay();
+	scenes::unloadMianMenu();
 	scenes::unloadCreditsTextures();
+	scenes::unloadHowTo();
 	UnloadTexture(backGround);
 	CloseAudioDevice();
 	CloseWindow();
